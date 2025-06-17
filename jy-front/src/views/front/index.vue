@@ -3,22 +3,13 @@
     <!-- 顶部导航 -->
     <header class="header-bar">
       <div class="header-left">
-        <span
-          class="nav-item"
-          :class="{ active: currentPath === '/index1' }"
-          @click="handleTabClick('/index1')">
+        <span class="nav-item" :class="{ active: currentPath === 1 }" @click="handleTabClick(1)">
           首页
         </span>
-        <span
-          class="nav-item"
-          :class="{ active: currentPath === '/index2' }"
-          @click="handleTabClick('/index2')">
+        <span class="nav-item" :class="{ active: currentPath === 2 }" @click="handleTabClick(2)">
           水域救援
         </span>
-        <span
-          class="nav-item"
-          :class="{ active: currentPath === '/index3' }"
-          @click="handleTabClick('/index3')">
+        <span class="nav-item" :class="{ active: currentPath === 3 }" @click="handleTabClick(3)">
           音视频联机
         </span>
       </div>
@@ -39,14 +30,13 @@
 import { onMounted, ref } from "vue";
 import router from "@/router";
 const currentPath = ref(null);
-const handleTabClick = (path) => {
-  console.log(path);
-  currentPath.value = path;
-  router.push("/front" + path);
+const handleTabClick = (index) => {
+  currentPath.value = index;
+  router.push("/front/index" + index);
 };
 onMounted(() => {
-  currentPath.value = "/front/index1";
-  router.push(currentPath.value);
+  currentPath.value = 1;
+  router.push("/front/index" + currentPath.value);
 });
 </script>
 
@@ -91,7 +81,7 @@ body,
   gap: 2vw;
 }
 .nav-item {
-  font-size: 18px;
+  /* font-size: 18px; */
   padding: 0 10px;
   cursor: pointer;
   color: #4ecfff;
@@ -127,8 +117,8 @@ body,
   box-sizing: border-box;
 }
 .side-info {
-  width: 350px;
-  background: rgba(20, 40, 70, 0.7);
+  /* width: 350px; */
+  /* background: rgba(20, 40, 70, 0.7); */
   padding: 20px 10px;
   border-right: 2px solid #1a2a4a;
   display: flex;
@@ -141,7 +131,7 @@ body,
   margin-bottom: 20px;
 }
 .info-title {
-  font-size: 20px;
+  /* font-size: 20px; */
   color: #4ecfff;
   margin-bottom: 10px;
 }

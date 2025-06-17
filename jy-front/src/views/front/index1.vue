@@ -2,7 +2,7 @@
   <!-- 顶部导航 -->
   <!-- <div class="main-content"> -->
   <!-- 左侧信息区 -->
-  <aside class="side-info">
+  <div class="side-info">
     <div class="info-group">
       <div class="info-title">编号：JY-001</div>
       <div class="info-cards">
@@ -26,7 +26,7 @@
         </div>
       </div>
     </div>
-  </aside>
+  </div>
   <!-- 右侧雷达区 -->
   <section class="radar-section">
     <div class="radar-panel">
@@ -77,7 +77,7 @@ const points = [
   margin-bottom: 20px;
 }
 .info-title {
-  font-size: 20px;
+  /* font-size: 20px; */
   color: #4ecfff;
   margin-bottom: 10px;
 }
