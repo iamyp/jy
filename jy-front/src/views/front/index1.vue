@@ -1,9 +1,56 @@
 <template>
   <!-- 顶部导航 -->
   <div class="main-content">
-    <!-- 左侧信息区 -->
+    <!-- 左上角救援舟卡片区域 -->
     <div class="side-info">
-      <div class="info-group" v-for="i in 3" :key="i">
+      <div class="rescue-boat-row">
+        <div class="rescue-boat-card corner-border" v-for="boat in rescueBoats" :key="boat.id">
+          <div class="boat-header">
+            <span>编号：{{ boat.id }}</span>
+            <span class="boat-title">救援舟</span>
+          </div>
+          <div class="boat-metrics">
+            <div class="metric-box">
+              <div class="metric-icon metric-icon-dist">
+                <svg width="24" height="24" viewBox="0 0 32 32">
+                  <circle cx="16" cy="16" r="12" fill="#1defff" opacity="0.3" />
+                  <text x="16" y="21" text-anchor="middle" font-size="12" fill="#1defff">
+                    {{ boat.distance }}
+                  </text>
+                </svg>
+              </div>
+              <div>
+                <span class="metric-value">{{ boat.distance }}</span>
+                <span class="metric-unit">米</span>
+                <div class="metric-label">距离</div>
+              </div>
+            </div>
+            <div class="metric-box">
+              <div class="metric-icon metric-icon-pos">
+                <svg width="24" height="24" viewBox="0 0 32 32">
+                  <polygon points="16,4 28,28 16,22 4,28" fill="#1defff" />
+                </svg>
+              </div>
+              <div>
+                <span class="metric-value">{{ boat.angle }}</span>
+                <span class="metric-unit">度</span>
+                <div class="metric-label">方位</div>
+              </div>
+            </div>
+          </div>
+          <div class="boat-coord">
+            <span>E：{{ boat.e }}</span>
+            <span>S：{{ boat.s }}</span>
+          </div>
+          <div class="boat-actions">
+            <button class="boat-btn">启动</button>
+            <button class="boat-btn">停止</button>
+            <button class="boat-btn">指令</button>
+          </div>
+        </div>
+      </div>
+      <!-- 其余信息卡片区域 -->
+      <div class="info-group" v-for="i in 3" :key="'info' + i">
         <div class="info-card corner-border">
           <div class="info-header">
             <span class="info-title">编号：JY-001</span>
@@ -11,7 +58,6 @@
           <div class="info-metrics">
             <div class="metric-box">
               <div class="metric-icon metric-icon-pos">
-                <!-- 可替换为svg或图片 -->
                 <svg width="32" height="32" viewBox="0 0 32 32">
                   <polygon points="16,4 28,28 16,22 4,28" fill="#1defff" />
                 </svg>
@@ -37,7 +83,7 @@
           <div class="info-row info-coord"><span>E：</span><span>1.222222</span></div>
           <div class="info-row info-coord"><span>S：</span><span>1.222222</span></div>
           <div class="info-row info-health">
-            <span class="corner-box">体温 35℃</span>
+            <span>体温 35℃</span>
             <span>心率 120bpm</span>
             <span>血压 120mmHg</span>
           </div>
@@ -73,6 +119,10 @@ const points = [
   { x: 80, y: -60, color: "#00ffff", radius: 6 },
   { x: -100, y: 100, color: "#00ffff", radius: 10 },
 ];
+const rescueBoats = [
+  { id: "JY-001", distance: 800, angle: 40.2, e: "1.222222", s: "1.222222" },
+  { id: "JY-002", distance: 800, angle: 40.2, e: "1.222222", s: "1.222222" },
+];
 </script>
 
 <style scoped>
@@ -91,8 +141,59 @@ const points = [
   flex-direction: column;
   gap: 24px;
 }
-.info-group {
+.rescue-boat-row {
+  display: flex;
+  gap: 18px;
   margin-bottom: 18px;
+}
+.rescue-boat-card {
+  flex: 1;
+  min-width: 220px;
+  max-width: 260px;
+  padding: 14px 12px 10px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: linear-gradient(120deg, #1a2a4a 60%, #23608a 100%);
+  border-radius: 12px;
+  position: relative;
+}
+.boat-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  color: #4ecfff;
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+.boat-title {
+  color: #1defff;
+  font-weight: bold;
+}
+.boat-metrics {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.boat-coord {
+  color: #b8e0ff;
+  font-size: 13px;
+  margin-bottom: 8px;
+  display: flex;
+  gap: 12px;
+}
+.boat-actions {
+  display: flex;
+  gap: 8px;
+}
+.boat-btn {
+  background: #1a2a4a;
+  color: #4ecfff;
+  border: 1px solid #4ecfff;
+  border-radius: 6px;
+  padding: 2px 10px;
+  font-size: 13px;
+  cursor: pointer;
 }
 .corner-border {
   position: relative;
@@ -123,6 +224,9 @@ const points = [
   bottom: 0;
   border-left: none;
   border-top: none;
+}
+.info-group {
+  margin-bottom: 18px;
 }
 .info-header {
   display: flex;
