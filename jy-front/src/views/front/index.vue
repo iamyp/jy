@@ -44,20 +44,20 @@ onMounted(() => {
 html,
 body,
 #app,
-.main-bg {
+/* .main-bg {
   width: 100vw;
   height: 100vh;
-  min-height: 100vh;
+  min-height: 100vh; 
   min-width: 100vw;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   overflow: hidden;
-}
+} */
 .main-bg {
-  width: 100vw;
-  height: 100vh;
-  min-height: 100vh;
+  /* width: 100vw; */
+  /* height: 100vh; */
+  /* min-height: 100vh; */
   background: #0a1626;
   font-family: "Microsoft YaHei", Arial, sans-serif;
   color: #b8e0ff;

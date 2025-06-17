@@ -4,9 +4,9 @@
   <!-- 左侧信息区 -->
   <div class="side-info">
     <div class="info-group">
-      <div class="info-title">编号：JY-001</div>
-      <div class="info-cards">
-        <div class="info-card" v-for="i in 3" :key="i">
+      <div class="info-cards corner-box">
+        <div class="info-card" v-for="i in 2" :key="i">
+          <div class="info-title">编号：JY-001</div>
           <div class="info-row"><span>E：</span><span>1.222222</span></div>
           <div class="info-row"><span>S：</span><span>1.222222</span></div>
           <div class="info-row">
@@ -14,7 +14,30 @@
             <span>40.2℃</span>
           </div>
           <div class="info-row">
-            <span>体温hahaha 35℃</span>
+            <span>体温 35℃</span>
+            <span>心率 120bpm</span>
+            <span>血压 120mmHg</span>
+          </div>
+          <div class="info-row">
+            <span class="info-btn"></span>
+            <span class="info-btn"></span>
+            <span class="info-btn"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="info-group">
+      <div class="info-cards corner-box">
+        <div class="info-card" v-for="i in 2" :key="i">
+          <div class="info-title">编号：JY-001</div>
+          <div class="info-row"><span>E：</span><span>1.222222</span></div>
+          <div class="info-row"><span>S：</span><span>1.222222</span></div>
+          <div class="info-row">
+            <span>800米</span>
+            <span>40.2℃</span>
+          </div>
+          <div class="info-row">
+            <span>体温 35℃</span>
             <span>心率 120bpm</span>
             <span>血压 120mmHg</span>
           </div>
@@ -65,7 +88,7 @@ const points = [
   height: calc(100vh - 60px);
 }
 .side-info {
-  width: 350px;
+  /* width: 350px; */
   background: rgba(20, 40, 70, 0.7);
   padding: 20px 10px;
   border-right: 2px solid #1a2a4a;
@@ -83,7 +106,7 @@ const points = [
 }
 .info-cards {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   gap: 16px;
 }
 .info-card {
