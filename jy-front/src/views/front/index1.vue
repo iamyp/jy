@@ -50,7 +50,7 @@
 </template>
 
 <script setup>
-import Radar2 from "@/components/radar/Radar2.vue";
+import Radar2 from "@/components/radar/Radar1.vue";
 const points = [
   { x: 0, y: 0, color: "#00ffff", radius: 8 },
   { x: 80, y: -60, color: "#00ffff", radius: 6 },
