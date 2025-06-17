@@ -50,14 +50,6 @@ const points = [
 </script>
 
 <style scoped>
-.main-bg {
-  min-height: 100vh;
-  background: #0a1626;
-  font-family: "Microsoft YaHei", Arial, sans-serif;
-  color: #b8e0ff;
-  padding: 0;
-  margin: 0;
-}
 .main-content {
   width: 100vw;
   min-height: 100vh;

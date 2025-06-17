@@ -81,7 +81,6 @@ body,
   gap: 2vw;
 }
 .nav-item {
-  /* font-size: 18px; */
   padding: 0 10px;
   cursor: pointer;
   color: #4ecfff;
