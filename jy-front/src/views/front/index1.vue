@@ -55,12 +55,18 @@
             </div>
             <div class="boat-actions-btn">
               <div class="status-cnt">
-                <img src="@/assets/cicons/icon-status.png" style="width: 24px; height: 24px" />
-                <span>已启动</span>
+                <div>
+                  <img src="@/assets/cicons/icon-status.png" style="width: 24px; height: 24px" />
+                </div>
+                <div style="margin-left: 20px">已启动</div>
               </div>
               <div class="status-cnt-1">
-                <img src="@/assets/cicons/icon-camera.png" style="width: 24px; height: 24px" />
-                <img src="@/assets/cicons/icon-sound-off.png" style="width: 24px; height: 24px" />
+                <div>
+                  <img src="@/assets/cicons/icon-camera.png" style="width: 24px; height: 24px" />
+                </div>
+                <div style="margin-left: 20px">
+                  <img src="@/assets/cicons/icon-sound-off.png" style="width: 24px; height: 24px" />
+                </div>
                 <!-- <button class="boat-btn">启动</button>
                 <button class="boat-btn">停止</button> -->
                 <!-- <button class="boat-btn">指令</button> -->
@@ -239,6 +245,7 @@ const rescueBoats = [
   flex-direction: column;
   /* gap: 8px; */
   justify-content: space-around;
+  flex-grow: 1;
 }
 .boat-btn {
   background: #1a2a4a;
@@ -361,7 +368,6 @@ const rescueBoats = [
   align-items: center;
   color: #b8e0ff;
   font-size: 14px;
-  font-weight: bold;
   flex-direction: column;
 }
 .info-coord {
@@ -423,7 +429,7 @@ const rescueBoats = [
   color: #4ecfff;
   border: 2px solid #4ecfff;
   border-radius: 50%;
-  font-size: 24px;
+  font-size: 30px;
   cursor: pointer;
   margin-bottom: 8px;
 }
@@ -458,15 +464,17 @@ const rescueBoats = [
   display: flex;
   align-items: center;
   /* gap: 10px; */
-  border-radius: 5px 5px 5px 5px;
-  border: 1px solid #23ced9;
+  /* border-radius: 5px 5px 5px 5px;
+  border: 1px solid #23ced9; */
   /* padding: 4px 10px; */
   font-size: 14px;
+  /* justify-content: space-around; */
 }
 .status-cnt-1 {
   display: flex;
   align-items: center;
   /* gap: 10px; */
+  /* justify-content: space-around; */
 }
 
 /* .corner-box {
