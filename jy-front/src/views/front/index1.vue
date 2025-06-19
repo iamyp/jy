@@ -77,37 +77,52 @@
           <div class="info-header">
             <span class="info-title">编号：JY-001</span>
           </div>
-          <div class="info-metrics">
-            <div class="metric-box">
-              <div class="metric-icon metric-icon-pos">
-                <svg width="32" height="32" viewBox="0 0 32 32">
-                  <polygon points="16,4 28,28 16,22 4,28" fill="#1defff" />
-                </svg>
+          <div class="info-body">
+            <div class="info-coord-group">
+              <div class="info-row info-coord">
+                <div>E： 1.222222</div>
               </div>
-              <div class="metric-main">
-                <span class="metric-value">40.2</span><span class="metric-unit">度</span>
-                <div class="metric-label">方位</div>
+              <div class="info-row info-coord">
+                <div>S： 1.222222</div>
               </div>
             </div>
-            <div class="metric-box">
-              <div class="metric-icon metric-icon-dist">
-                <svg width="32" height="32" viewBox="0 0 32 32">
-                  <circle cx="16" cy="16" r="12" fill="#1defff" opacity="0.3" />
-                  <text x="16" y="21" text-anchor="middle" font-size="14" fill="#1defff">800</text>
-                </svg>
+            <div class="info-metrics">
+              <div class="metric-box">
+                <!-- <div class="metric-icon metric-icon-pos">
+                  <svg width="32" height="32" viewBox="0 0 32 32">
+                    <polygon points="16,4 28,28 16,22 4,28" fill="#1defff" />
+                  </svg>
+                </div> -->
+                <img src="@/assets/cicons/icon-direction.png" style="width: 24px; height: 24px" />
+                <div class="metric-main">
+                  <span class="metric-value">40.2</span><span class="metric-unit">度</span>
+                  <div class="metric-label">方位</div>
+                </div>
               </div>
-              <div class="metric-main">
-                <span class="metric-value">800</span><span class="metric-unit">米</span>
-                <div class="metric-label">距离</div>
+              <div class="metric-box">
+                <!-- <div class="metric-icon metric-icon-dist">
+                  <svg width="32" height="32" viewBox="0 0 32 32">
+                    <circle cx="16" cy="16" r="12" fill="#1defff" opacity="0.3" />
+                    <text x="16" y="21" text-anchor="middle" font-size="14" fill="#1defff">
+                      800
+                    </text>
+                  </svg>
+                </div> -->
+                <img
+                  src="@/assets/cicons/icon-distance.png"
+                  style="width: 24px; height: 24px"
+                  alt="boat-icon" />
+                <div class="metric-main">
+                  <span class="metric-value">800</span><span class="metric-unit">米</span>
+                  <div class="metric-label">距离</div>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="info-row info-coord"><span>E：</span><span>1.222222</span></div>
-          <div class="info-row info-coord"><span>S：</span><span>1.222222</span></div>
-          <div class="info-row info-health">
-            <span>体温 35℃</span>
-            <span>心率 120bpm</span>
-            <span>血压 120mmHg</span>
+            <div class="info-row info-health">
+              <span>体温 35℃</span>
+              <span>心率 120bpm</span>
+              <span>血压 120mmHg</span>
+            </div>
           </div>
         </div>
       </div>
@@ -205,6 +220,7 @@ const rescueBoats = [
   flex-direction: column;
   /* gap: 12px; */
   justify-content: space-around;
+  flex-grow: 1;
 }
 .boat-actions {
   display: flex;
@@ -256,8 +272,26 @@ const rescueBoats = [
   border-left: none;
   border-top: none;
 } */
+.info-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 14px 12px 10px 12px;
+  background: linear-gradient(120deg, #1a2a4a 60%, #23608a 100%);
+  border-radius: 12px;
+}
+.info-body {
+  display: flex;
+  justify-content: space-between;
+}
+.info-coord-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: space-around;
+}
 .info-group {
-  margin-bottom: 18px;
+  /* margin-bottom: 18px; */
 }
 .info-header {
   display: flex;
@@ -266,14 +300,14 @@ const rescueBoats = [
 }
 .info-title {
   color: #4ecfff;
-  font-size: 18px;
+  font-size: 13px;
   font-weight: bold;
   letter-spacing: 1px;
 }
 .info-metrics {
   display: flex;
-  flex-direction: row;
-  gap: 18px;
+  flex-direction: column;
+  /* gap: 18px; */
   margin-bottom: 10px;
 }
 .metric-box {
@@ -323,6 +357,7 @@ const rescueBoats = [
   align-items: center;
   color: #b8e0ff;
   font-size: 15px;
+  flex-direction: column;
 }
 .info-coord {
   margin-bottom: 2px;
