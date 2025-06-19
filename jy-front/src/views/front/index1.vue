@@ -27,7 +27,6 @@
                 <div>
                   <div class="metric-value">{{ boat.distance }}米</div>
                 </div>
-                <!-- <span class="metric-unit">米</span> -->
                 <div class="metric-label">距离</div>
               </div>
             </div>
@@ -44,8 +43,7 @@
                   alt="boat-icon" />
               </div>
               <div>
-                <span class="metric-value">{{ boat.angle }}</span>
-                <span class="metric-unit">度</span>
+                <div class="metric-value">{{ boat.angle }}度</div>
                 <div class="metric-label">方位</div>
               </div>
             </div>
@@ -93,9 +91,14 @@
                     <polygon points="16,4 28,28 16,22 4,28" fill="#1defff" />
                   </svg>
                 </div> -->
-                <img src="@/assets/cicons/icon-direction.png" style="width: 24px; height: 24px" />
+                <div class="metric-icon metric-icon-dist">
+                  <img
+                    src="@/assets/cicons/icon-direction.png"
+                    style="width: 24px; height: 24px"
+                    alt="boat-icon" />
+                </div>
                 <div class="metric-main">
-                  <span class="metric-value">40.2</span><span class="metric-unit">度</span>
+                  <div class="metric-value">40.2度</div>
                   <div class="metric-label">方位</div>
                 </div>
               </div>
@@ -108,12 +111,14 @@
                     </text>
                   </svg>
                 </div> -->
-                <img
-                  src="@/assets/cicons/icon-distance.png"
-                  style="width: 24px; height: 24px"
-                  alt="boat-icon" />
+                <div class="metric-icon metric-icon-dist">
+                  <img
+                    src="@/assets/cicons/icon-distance.png"
+                    style="width: 24px; height: 24px"
+                    alt="boat-icon" />
+                </div>
                 <div class="metric-main">
-                  <span class="metric-value">800</span><span class="metric-unit">米</span>
+                  <div class="metric-value">800米</div>
                   <div class="metric-label">距离</div>
                 </div>
               </div>
@@ -193,7 +198,7 @@ const rescueBoats = [
   /* align-items: flex-start; */
   background: linear-gradient(120deg, #1a2a4a 60%, #23608a 100%);
   border-radius: 12px;
-  position: relative;
+  /* position: relative; */
 }
 .boat-header {
   display: flex;
@@ -307,7 +312,7 @@ const rescueBoats = [
 .info-metrics {
   display: flex;
   flex-direction: column;
-  /* gap: 18px; */
+  gap: 12px;
   margin-bottom: 10px;
 }
 .metric-box {
@@ -316,8 +321,9 @@ const rescueBoats = [
   background: rgba(10, 22, 38, 0.7);
   border-radius: 8px;
   padding: 6px 18px 6px 6px;
+  /* flex: 1; */
   /* min-width: 120px; */
-  position: relative;
+  /* position: relative; */
 }
 .metric-icon {
   /* width: 40px;
@@ -336,18 +342,13 @@ const rescueBoats = [
 }
 .metric-value {
   color: #fff;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: bold;
   line-height: 1;
 }
-.metric-unit {
-  color: #b8e0ff;
-  font-size: 14px;
-  margin-left: 2px;
-}
 .metric-label {
   color: #b8e0ff;
-  font-size: 15px;
+  font-size: 13px;
   margin-top: 2px;
 }
 .info-row {
@@ -378,7 +379,7 @@ const rescueBoats = [
   padding: 40px 0 0 0;
 }
 .radar-panel {
-  position: relative;
+  /* position: relative; */
   width: 540px;
   height: 540px;
   display: flex;
