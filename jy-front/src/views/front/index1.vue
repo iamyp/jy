@@ -124,9 +124,9 @@
               </div>
             </div>
             <div class="info-row info-health">
-              <span>体温 35℃</span>
-              <span>心率 120bpm</span>
-              <span>血压 120mmHg</span>
+              <div>体温 35℃</div>
+              <div>心率 120bpm</div>
+              <div>血压 120mmHg</div>
             </div>
           </div>
         </div>
@@ -135,11 +135,13 @@
     <!-- 右侧雷达区 -->
     <section class="radar-section">
       <div class="radar-panel">
-        <Radar2 :points="points" :gridCount="4" :size="500" :scanAngle="60" :scanSpeed="0.02" />
-        <div class="radar-ctrl">
-          <button class="ctrl-btn">+</button>
-          <div class="radar-range">7000米</div>
-          <button class="ctrl-btn">-</button>
+        <div class="radar-panel-inner">
+          <Radar2 :points="points" :gridCount="4" :size="500" :scanAngle="60" :scanSpeed="0.02" />
+          <div class="radar-ctrl">
+            <button class="ctrl-btn">+</button>
+            <div class="radar-range">7000米</div>
+            <button class="ctrl-btn">-</button>
+          </div>
         </div>
       </div>
       <div class="weather-panel">
@@ -155,7 +157,7 @@
 </template>
 
 <script setup>
-import Radar2 from "@/components/radar/Radar1.vue";
+import Radar2 from "@/components/radar/Radar2.vue";
 const points = [
   { x: 0, y: 0, color: "#00ffff", radius: 8 },
   { x: 80, y: -60, color: "#00ffff", radius: 6 },
@@ -312,8 +314,9 @@ const rescueBoats = [
 .info-metrics {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin-bottom: 10px;
+  /* gap: 12px; */
+  /* margin-bottom: 10px; */
+  justify-content: space-around;
 }
 .metric-box {
   display: flex;
@@ -357,26 +360,35 @@ const rescueBoats = [
   margin-bottom: 4px;
   align-items: center;
   color: #b8e0ff;
-  font-size: 15px;
+  font-size: 14px;
+  font-weight: bold;
   flex-direction: column;
 }
 .info-coord {
-  margin-bottom: 2px;
+  /* margin-bottom: 2px; */
+  padding: 10px;
+  border: 1px solid #23ced9;
+  border-radius: 6px;
 }
 .info-health {
-  margin-top: 8px;
-  gap: 24px;
+  /* margin-top: 8px; */
+  /* gap: 24px; */
   color: #1defff;
-  font-size: 15px;
+  font-size: 14px;
+  align-items: flex-start;
+  border: 1px solid #23ced9;
+  border-radius: 6px;
+  padding: 10px;
 }
 .radar-section {
   flex: 1;
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 40px;
+  align-items: center;
+  justify-content: space-around;
+  /* gap: 40px; */
   padding: 40px 0 0 0;
+  margin-left: 100px;
 }
 .radar-panel {
   /* position: relative; */
@@ -387,11 +399,18 @@ const rescueBoats = [
   align-items: center;
   justify-content: center;
 }
+.radar-panel-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .radar-ctrl {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
+  /* position: absolute; */
+  /* right: 10px;
+  top: 50%; */
+  /* transform: translateY(-50%); */
+  margin-left: 20px;
+  min-width: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -420,7 +439,8 @@ const rescueBoats = [
   padding: 18px 20px;
   color: #b8e0ff;
   font-size: 16px;
-  margin-top: 40px;
+  /* margin-top: 40px; */
+  align-self: flex-start;
 }
 .weather-title {
   font-size: 18px;
@@ -441,7 +461,7 @@ const rescueBoats = [
   border-radius: 5px 5px 5px 5px;
   border: 1px solid #23ced9;
   /* padding: 4px 10px; */
-  font-size: 12px;
+  font-size: 14px;
 }
 .status-cnt-1 {
   display: flex;
