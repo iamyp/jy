@@ -4,7 +4,7 @@
     <!-- 左上角救援舟卡片区域 -->
     <div class="side-info">
       <div class="rescue-boat-row">
-        <div class="rescue-boat-card corner-border" v-for="boat in rescueBoats" :key="boat.id">
+        <div class="rescue-boat-card" v-for="boat in rescueBoats" :key="boat.id">
           <div class="boat-header">
             <span>编号：{{ boat.id }}</span>
             <span class="boat-title">救援舟</span>
@@ -12,24 +12,36 @@
           <div class="boat-metrics">
             <div class="metric-box">
               <div class="metric-icon metric-icon-dist">
-                <svg width="24" height="24" viewBox="0 0 32 32">
+                <!-- <svg width="24" height="24" viewBox="0 0 32 32">
                   <circle cx="16" cy="16" r="12" fill="#1defff" opacity="0.3" />
                   <text x="16" y="21" text-anchor="middle" font-size="12" fill="#1defff">
                     {{ boat.distance }}
                   </text>
-                </svg>
+                </svg> -->
+                <img
+                  src="@/assets/cicons/icon-distance.png"
+                  style="width: 24px; height: 24px"
+                  alt="boat-icon" />
               </div>
               <div>
-                <span class="metric-value">{{ boat.distance }}</span>
-                <span class="metric-unit">米</span>
+                <div>
+                  <div class="metric-value">{{ boat.distance }}米</div>
+                </div>
+                <!-- <span class="metric-unit">米</span> -->
                 <div class="metric-label">距离</div>
               </div>
             </div>
             <div class="metric-box">
-              <div class="metric-icon metric-icon-pos">
+              <!-- <div class="metric-icon metric-icon-pos">
                 <svg width="24" height="24" viewBox="0 0 32 32">
                   <polygon points="16,4 28,28 16,22 4,28" fill="#1defff" />
                 </svg>
+              </div> -->
+              <div class="metric-icon metric-icon-dist">
+                <img
+                  src="@/assets/cicons/icon-direction.png"
+                  style="width: 24px; height: 24px"
+                  alt="boat-icon" />
               </div>
               <div>
                 <span class="metric-value">{{ boat.angle }}</span>
@@ -38,20 +50,30 @@
               </div>
             </div>
           </div>
-          <div class="boat-coord">
-            <span>E：{{ boat.e }}</span>
-            <span>S：{{ boat.s }}</span>
-          </div>
           <div class="boat-actions">
-            <button class="boat-btn">启动</button>
-            <button class="boat-btn">停止</button>
-            <button class="boat-btn">指令</button>
+            <div class="boat-coord">
+              <div>E：{{ boat.e }}</div>
+              <div>S：{{ boat.s }}</div>
+            </div>
+            <div class="boat-actions-btn">
+              <div class="status-cnt">
+                <img src="@/assets/cicons/icon-status.png" style="width: 24px; height: 24px" />
+                <span>已启动</span>
+              </div>
+              <div class="status-cnt-1">
+                <img src="@/assets/cicons/icon-camera.png" style="width: 24px; height: 24px" />
+                <img src="@/assets/cicons/icon-sound-off.png" style="width: 24px; height: 24px" />
+                <!-- <button class="boat-btn">启动</button>
+                <button class="boat-btn">停止</button> -->
+                <!-- <button class="boat-btn">指令</button> -->
+              </div>
+            </div>
           </div>
         </div>
       </div>
       <!-- 其余信息卡片区域 -->
       <div class="info-group" v-for="i in 3" :key="'info' + i">
-        <div class="info-card corner-border">
+        <div class="info-card">
           <div class="info-header">
             <span class="info-title">编号：JY-001</span>
           </div>
@@ -133,7 +155,7 @@ const rescueBoats = [
   background: #0a1626;
 }
 .side-info {
-  width: 370px;
+  /* width: 370px; */
   background: rgba(20, 40, 70, 0.7);
   padding: 28px 10px 0 10px;
   border-right: 2px solid #1a2a4a;
@@ -153,7 +175,7 @@ const rescueBoats = [
   padding: 14px 12px 10px 12px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  /* align-items: flex-start; */
   background: linear-gradient(120deg, #1a2a4a 60%, #23608a 100%);
   border-radius: 12px;
   position: relative;
@@ -178,13 +200,22 @@ const rescueBoats = [
 .boat-coord {
   color: #b8e0ff;
   font-size: 13px;
-  margin-bottom: 8px;
+  /* margin-bottom: 8px; */
   display: flex;
-  gap: 12px;
+  flex-direction: column;
+  /* gap: 12px; */
+  justify-content: space-around;
 }
 .boat-actions {
   display: flex;
-  gap: 8px;
+  justify-content: space-around;
+  /* gap: 12px; */
+}
+.boat-actions-btn {
+  display: flex;
+  flex-direction: column;
+  /* gap: 8px; */
+  justify-content: space-around;
 }
 .boat-btn {
   background: #1a2a4a;
@@ -195,7 +226,7 @@ const rescueBoats = [
   font-size: 13px;
   cursor: pointer;
 }
-.corner-border {
+/* .corner-border {
   position: relative;
   background: linear-gradient(120deg, #1a2a4a 60%, #23608a 100%);
   border-radius: 12px;
@@ -224,7 +255,7 @@ const rescueBoats = [
   bottom: 0;
   border-left: none;
   border-top: none;
-}
+} */
 .info-group {
   margin-bottom: 18px;
 }
@@ -251,12 +282,12 @@ const rescueBoats = [
   background: rgba(10, 22, 38, 0.7);
   border-radius: 8px;
   padding: 6px 18px 6px 6px;
-  min-width: 120px;
+  /* min-width: 120px; */
   position: relative;
 }
 .metric-icon {
-  width: 40px;
-  height: 40px;
+  /* width: 40px;
+  height: 40px; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -271,7 +302,7 @@ const rescueBoats = [
 }
 .metric-value {
   color: #fff;
-  font-size: 28px;
+  font-size: 14px;
   font-weight: bold;
   line-height: 1;
 }
@@ -367,7 +398,22 @@ const rescueBoats = [
   margin-bottom: 6px;
 }
 
-.corner-box {
+.status-cnt {
+  display: flex;
+  align-items: center;
+  /* gap: 10px; */
+  border-radius: 5px 5px 5px 5px;
+  border: 1px solid #23ced9;
+  /* padding: 4px 10px; */
+  font-size: 12px;
+}
+.status-cnt-1 {
+  display: flex;
+  align-items: center;
+  /* gap: 10px; */
+}
+
+/* .corner-box {
   position: relative;
   width: 300px;
   height: 120px;
@@ -395,10 +441,10 @@ const rescueBoats = [
   bottom: 0;
   border-left: none;
   border-top: none;
-}
+} */
 
 /* 右上角 */
-.corner-box .corner-rt {
+/* .corner-box .corner-rt {
   position: absolute;
   right: 0;
   top: 0;
@@ -406,10 +452,10 @@ const rescueBoats = [
   height: 20px;
   border-top: 2px solid #1defff;
   border-right: 2px solid #1defff;
-}
+} */
 
 /* 左下角 */
-.corner-box .corner-lb {
+/* .corner-box .corner-lb {
   position: absolute;
   left: 0;
   bottom: 0;
@@ -417,5 +463,5 @@ const rescueBoats = [
   height: 20px;
   border-left: 2px solid #1defff;
   border-bottom: 2px solid #1defff;
-}
+} */
 </style>
