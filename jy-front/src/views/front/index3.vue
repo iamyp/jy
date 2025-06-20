@@ -54,7 +54,7 @@ const points = [
   width: 100vw;
   min-height: 100vh;
   box-sizing: border-box;
-  padding: 24px 24px 0 24px;
+  /* padding: 24px 24px 0 24px; */
   display: flex;
   flex-direction: row;
   gap: 24px;

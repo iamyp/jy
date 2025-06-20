@@ -20,7 +20,7 @@
         <span class="header-info">12~14℃</span>
       </div>
     </header>
-    <div class="main-content">
+    <div class="main-component-content">
       <router-view />
     </div>
   </div>
@@ -107,11 +107,12 @@ body,
 .header-info {
   margin-left: 10px;
 }
-.main-content {
+.main-component-content {
   display: flex;
   flex-direction: row;
   height: calc(100vh - 60px);
-  min-height: calc(100vh - 60px);
+  /* min-height: calc(100vh - 60px); */
+  padding: 24px;
   width: 100vw;
   box-sizing: border-box;
 }

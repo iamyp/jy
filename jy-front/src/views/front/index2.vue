@@ -17,9 +17,9 @@
             <div class="info-row"><span>S：</span><span>1.222222</span></div>
             <div class="info-row">
               <button class="btn-start">启动</button>
-              <button class="btn-arrow">&lt;</button>
+              <!-- <button class="btn-arrow">&lt;</button> -->
               <button class="btn-stop">停止</button>
-              <button class="btn-arrow">&gt;</button>
+              <!-- <button class="btn-arrow">&gt;</button> -->
             </div>
           </div>
         </div>
@@ -62,6 +62,7 @@
       </div>
     </div>
     <!-- 路径表 -->
+    <div class="device-row">
     <div class="path-table-wrap">
       <div class="path-table-title">编号：JY-001 &nbsp;&nbsp;救援路径</div>
       <table class="path-table">
@@ -84,6 +85,30 @@
           </tr>
         </tbody>
       </table>
+    </div>
+    <div class="path-table-wrap">
+      <div class="path-table-title">编号：JY-001 &nbsp;&nbsp;救援路径</div>
+      <table class="path-table">
+        <thead>
+          <tr>
+            <th>路径顺序</th>
+            <th>设备编号</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(row, idx) in pathRows" :key="idx">
+            <td>{{ row.order }}</td>
+            <td>{{ row.device }}</td>
+            <td>
+              <span class="table-op">上移</span>
+              <span class="table-op">下移</span>
+              <span class="table-op">删除</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
     </div>
     <!-- 下半部分：侦测点表 + 雷达图 -->
     <div class="bottom-row">
@@ -178,9 +203,9 @@ const points = [
 <style scoped>
 .main-content {
   width: 100vw;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   box-sizing: border-box;
-  padding: 24px 24px 0 24px;
+  /* padding: 24px 24px 0 24px; */
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -189,7 +214,7 @@ const points = [
   display: flex;
   flex-direction: row;
   gap: 32px;
-  margin-bottom: 16px;
+  /* margin-bottom: 16px; */
 }
 .device-card {
   flex: 1;
@@ -200,8 +225,8 @@ const points = [
   display: flex;
   flex-direction: column;
   gap: 8px;
-  min-width: 420px;
-  max-width: 600px;
+  /* min-width: 420px; */
+  /* max-width: 600px; */
 }
 .device-header {
   display: flex;
@@ -290,12 +315,13 @@ const points = [
   border: 1px solid #4ecfff22;
 }
 .path-table-wrap {
+  flex: 1;
   background: rgba(20, 40, 70, 0.7);
   border-radius: 10px;
   border: 1.5px solid #4ecfff44;
   padding: 12px 18px 18px 18px;
-  margin-bottom: 12px;
-  max-width: 700px;
+  /* margin-bottom: 12px; */
+  /* max-width: 700px; */
 }
 .path-table-title {
   color: #4ecfff;
@@ -328,7 +354,7 @@ const points = [
   display: flex;
   flex-direction: row;
   gap: 32px;
-  margin-top: 18px;
+  /* margin-top: 18px; */
 }
 .detect-table-wrap {
   flex: 2;

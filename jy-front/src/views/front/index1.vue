@@ -139,7 +139,7 @@
       </div>
     </div>
     <!-- 右侧雷达区 -->
-    <section class="radar-section">
+    <div class="radar-section">
       <div class="radar-panel">
         <div class="radar-panel-inner">
           <Radar2 :points="points" :gridCount="4" :size="500" :scanAngle="60" :scanSpeed="0.02" />
@@ -158,7 +158,7 @@
         <div class="weather-row"><span>流速</span><span>0.1m/s</span></div>
         <div class="weather-row"><span>流向</span><span>西南偏南</span></div>
       </div>
-    </section>
+    </div>
   </div>
 </template>
 
@@ -181,12 +181,13 @@ const rescueBoats = [
   flex-direction: row;
   height: calc(100vh - 60px);
   background: #0a1626;
+  width: 100vw;
 }
 .side-info {
   /* width: 370px; */
-  background: rgba(20, 40, 70, 0.7);
-  padding: 28px 10px 0 10px;
-  border-right: 2px solid #1a2a4a;
+  /* background: rgba(20, 40, 70, 0.7); */
+  /* padding: 28px 10px 0 10px; */
+  /* border-right: 2px solid #1a2a4a; */
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -207,6 +208,7 @@ const rescueBoats = [
   background: linear-gradient(120deg, #1a2a4a 60%, #23608a 100%);
   border-radius: 12px;
   /* position: relative; */
+  border: 1.5px solid #4ecfff44;
 }
 .boat-header {
   display: flex;
@@ -293,6 +295,7 @@ const rescueBoats = [
   padding: 14px 12px 10px 12px;
   background: linear-gradient(120deg, #1a2a4a 60%, #23608a 100%);
   border-radius: 12px;
+  border: 1.5px solid #4ecfff44;
 }
 .info-body {
   display: flex;
@@ -393,13 +396,13 @@ const rescueBoats = [
   align-items: center;
   justify-content: space-around;
   /* gap: 40px; */
-  padding: 40px 0 0 0;
+  /* padding: 40px 0 0 0; */
   margin-left: 100px;
 }
 .radar-panel {
   /* position: relative; */
-  width: 540px;
-  height: 540px;
+  /* width: 540px;
+  height: 540px; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -447,6 +450,7 @@ const rescueBoats = [
   font-size: 16px;
   /* margin-top: 40px; */
   align-self: flex-start;
+  border: 1.5px solid #4ecfff44;
 }
 .weather-title {
   font-size: 18px;
