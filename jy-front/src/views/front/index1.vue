@@ -195,7 +195,7 @@ const rescueBoats = [
 .rescue-boat-row {
   display: flex;
   gap: 18px;
-  margin-bottom: 18px;
+  /* margin-bottom: 18px; */
 }
 .rescue-boat-card {
   flex: 1;

@@ -15,8 +15,11 @@
       </div>
       <div class="header-title">水域应急救援系统</div>
       <div class="header-right">
+        <img src="@/assets/cicons/icon-time.png"  class="header-icon"/>
         <span class="header-info">22:18:46</span>
+        <img src="@/assets/cicons/icon-calendar.png"  class="header-icon"/>
         <span class="header-info">2022.01.10</span>
+        <img src="@/assets/cicons/icon-temperature.png"  class="header-icon"/>
         <span class="header-info">12~14℃</span>
       </div>
     </header>
@@ -101,11 +104,18 @@ body,
 }
 .header-right {
   display: flex;
-  gap: 1vw;
-  font-size: 16px;
+  align-items: center;
+  /* gap: 10px; */
+  font-size: 18px;
+}
+.header-icon {
+  width: 24px;
+  height: 24px;
+  /* margin-left: 20px; */
 }
 .header-info {
-  margin-left: 10px;
+  margin-left: 4px;
+  margin-right: 25px;
 }
 .main-component-content {
   display: flex;
