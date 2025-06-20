@@ -179,7 +179,7 @@ const rescueBoats = [
 .main-content {
   display: flex;
   flex-direction: row;
-  height: calc(100vh - 60px);
+  /* height: calc(100vh - 60px); */
   background: #0a1626;
   width: 100vw;
 }

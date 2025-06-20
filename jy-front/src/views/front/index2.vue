@@ -146,7 +146,7 @@
         </table>
       </div>
       <div class="radar-wrap">
-        <Radar2 :points="points" :gridCount="4" :size="340" :scanAngle="60" :scanSpeed="0.02" />
+        <Radar2 :points="points" :gridCount="4" :scanAngle="60" :scanSpeed="0.02" />
       </div>
     </div>
   </div>
@@ -395,7 +395,7 @@ const points = [
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 360px;
-  min-height: 360px;
+  /* min-width: 360px;
+  min-height: 360px; */
 }
 </style>

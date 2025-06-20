@@ -125,6 +125,7 @@ body,
   padding: 24px;
   width: 100vw;
   box-sizing: border-box;
+  overflow: auto;
 }
 .side-info {
   /* width: 350px; */

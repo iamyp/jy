@@ -52,7 +52,7 @@ const points = [
 <style scoped>
 .main-content {
   width: 100vw;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   box-sizing: border-box;
   /* padding: 24px 24px 0 24px; */
   display: flex;

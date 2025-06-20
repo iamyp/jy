@@ -64,7 +64,7 @@ const props = defineProps({
   },
   size: {
     type: Number,
-    default: 400,
+    default: 290,
   },
   scanAngle: {
     type: Number,
