@@ -3,24 +3,35 @@
     <!-- 上半部分：两组设备卡片 -->
     <div class="device-row">
       <div class="device-card" v-for="item in 2" :key="item">
-        <div class="device-header">
+        <!-- <div class="device-header">
           <span>编号：JY-001</span>
           <span class="device-status">已启动</span>
-        </div>
+        </div> -->
         <div class="device-body">
-          <img
-            class="device-img"
-            src="https://img.js.design/assets/img/64e5e2e7b7b6b6b7b7b6b6b7.png"
-            alt="boat" />
+          <div class="device-info">
+            <img class="device-img" src="@/assets/cicons/icon-boat.png" alt="boat" />
+            <div class="info-row">
+              <button class="btn-start">启动</button>
+              <button class="btn-stop">停止</button>
+            </div>
+          </div>
           <div class="device-info">
             <div class="info-row"><span>E：</span><span>1.222222</span></div>
             <div class="info-row"><span>S：</span><span>1.222222</span></div>
-            <div class="info-row">
-              <button class="btn-start">启动</button>
-              <!-- <button class="btn-arrow">&lt;</button> -->
-              <button class="btn-stop">停止</button>
-              <!-- <button class="btn-arrow">&gt;</button> -->
-            </div>
+            <div class="info-row">已启动</div>
+          </div>
+          <div class="device-info">
+            <video
+              class="device-video"
+              controls
+              autoplay
+              muted
+              style="width: 100%; height: 120px; object-fit: cover; border-radius: 4px">
+              <source
+                src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                type="video/mp4" />
+              您的浏览器不支持视频播放。
+            </video>
           </div>
         </div>
         <div class="path-table-wrap">
@@ -202,7 +213,7 @@ const points = [
   border: 1px solid #4ecfff22;
 }
 .device-info {
-  flex: 1;
+  /* flex: 1; */
   display: flex;
   flex-direction: column;
   gap: 6px;
