@@ -2,7 +2,7 @@
   <div class="main-content">
     <!-- 上半部分：两组设备卡片 -->
     <div class="device-row">
-      <div class="device-card">
+      <div class="device-card" v-for="item in 2" :key="item">
         <div class="device-header">
           <span>编号：JY-001</span>
           <span class="device-status">已启动</span>
@@ -23,93 +23,40 @@
             </div>
           </div>
         </div>
-        <div class="device-footer">
+        <div class="path-table-wrap">
+          <div class="path-table-title">编号：JY-001 &nbsp;&nbsp;救援路径</div>
+          <table class="path-table">
+            <thead>
+              <tr>
+                <th>路径顺序</th>
+                <th>设备编号</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(row, idx) in pathRows" :key="idx">
+                <td>{{ row.order }}</td>
+                <td>{{ row.device }}</td>
+                <td>
+                  <span class="table-op">上移</span>
+                  <span class="table-op">下移</span>
+                  <span class="table-op">删除</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- <div class="device-footer">
           <span>救援指令</span>
           <img
             class="device-photo"
             src="https://img.js.design/assets/img/64e5e2e7b7b6b6b7b7b6b6b7.png"
             alt="rescue" />
-        </div>
-      </div>
-      <div class="device-card">
-        <div class="device-header">
-          <span>编号：JY-001</span>
-          <span class="device-status">已启动</span>
-        </div>
-        <div class="device-body">
-          <img
-            class="device-img"
-            src="https://img.js.design/assets/img/64e5e2e7b7b6b6b7b7b6b6b7.png"
-            alt="boat" />
-          <div class="device-info">
-            <div class="info-row"><span>E：</span><span>1.222222</span></div>
-            <div class="info-row"><span>S：</span><span>1.222222</span></div>
-            <div class="info-row">
-              <button class="btn-start">启动</button>
-              <button class="btn-arrow">&lt;</button>
-              <button class="btn-stop">停止</button>
-              <button class="btn-arrow">&gt;</button>
-            </div>
-          </div>
-        </div>
-        <div class="device-footer">
-          <span>救援指令</span>
-          <img
-            class="device-photo"
-            src="https://img.js.design/assets/img/64e5e2e7b7b6b6b7b7b6b6b7.png"
-            alt="rescue" />
-        </div>
+        </div> -->
       </div>
     </div>
     <!-- 路径表 -->
-    <div class="device-row">
-    <div class="path-table-wrap">
-      <div class="path-table-title">编号：JY-001 &nbsp;&nbsp;救援路径</div>
-      <table class="path-table">
-        <thead>
-          <tr>
-            <th>路径顺序</th>
-            <th>设备编号</th>
-            <th>操作</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(row, idx) in pathRows" :key="idx">
-            <td>{{ row.order }}</td>
-            <td>{{ row.device }}</td>
-            <td>
-              <span class="table-op">上移</span>
-              <span class="table-op">下移</span>
-              <span class="table-op">删除</span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="path-table-wrap">
-      <div class="path-table-title">编号：JY-001 &nbsp;&nbsp;救援路径</div>
-      <table class="path-table">
-        <thead>
-          <tr>
-            <th>路径顺序</th>
-            <th>设备编号</th>
-            <th>操作</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="(row, idx) in pathRows" :key="idx">
-            <td>{{ row.order }}</td>
-            <td>{{ row.device }}</td>
-            <td>
-              <span class="table-op">上移</span>
-              <span class="table-op">下移</span>
-              <span class="table-op">删除</span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    </div>
+    <div class="device-row"></div>
     <!-- 下半部分：侦测点表 + 雷达图 -->
     <div class="bottom-row">
       <div class="detect-table-wrap">
