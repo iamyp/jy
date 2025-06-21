@@ -8,25 +8,27 @@
           <span class="device-status">已启动</span>
         </div> -->
         <div class="device-body">
-          <div class="device-info">
-            <img class="device-img" src="@/assets/cicons/icon-boat.png" alt="boat" />
-            <div class="info-row">
-              <button class="btn-start">启动</button>
-              <button class="btn-stop">停止</button>
+          <div class="device-info-left-wrap">
+            <div class="device-info">
+              <img class="device-img" src="@/assets/cicons/icon-boat.png" alt="boat" />
+              <div class="info-row">
+                <button class="btn-start">启动</button>
+                <button class="btn-stop">停止</button>
+              </div>
+            </div>
+            <div class="device-info device-info-left">
+              <div class="info-row"><span>E：1.222222</span></div>
+              <div class="info-row"><span>S：1.222222</span></div>
+              <div class="info-row status-wrap">已启动</div>
             </div>
           </div>
-          <div class="device-info">
-            <div class="info-row"><span>E：</span><span>1.222222</span></div>
-            <div class="info-row"><span>S：</span><span>1.222222</span></div>
-            <div class="info-row">已启动</div>
-          </div>
-          <div class="device-info">
+          <div class="device-info device-info-right">
             <video
               class="device-video"
               controls
               autoplay
               muted
-              style="width: 100%; height: 120px; object-fit: cover; border-radius: 4px">
+              style="width: 100%; height: 200px; object-fit: cover; border-radius: 4px">
               <source
                 src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
                 type="video/mp4" />
@@ -179,7 +181,7 @@ const points = [
   background: rgba(20, 40, 70, 0.7);
   border-radius: 12px;
   border: 1.5px solid #4ecfff44;
-  padding: 18px 24px 12px 24px;
+  padding: 12px 12px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -205,18 +207,34 @@ const points = [
   gap: 18px;
 }
 .device-img {
-  width: 120px;
-  height: 60px;
+  width: 180px;
+  /* height: 60px; */
   object-fit: contain;
   border-radius: 8px;
   background: #0a1626;
-  border: 1px solid #4ecfff22;
 }
 .device-info {
   /* flex: 1; */
   display: flex;
   flex-direction: column;
   gap: 6px;
+  justify-content: space-around;
+  align-items: center;
+}
+.device-info-left-wrap {
+  display: flex;
+  flex-direction: row;
+  gap: 18px;
+  border: 1.5px solid #4ecfff44;
+  border-radius: 10px;
+  height: 100%;
+  padding: 12px;
+}
+.device-info-left {
+  /* flex: 3.8; */
+}
+.device-info-right {
+  flex: 2;
 }
 .info-row {
   display: flex;
@@ -355,5 +373,10 @@ const points = [
   justify-content: center;
   /* min-width: 360px;
   min-height: 360px; */
+}
+.status-wrap {
+  color: #00ffcc;
+  font-size: 16px;
+  font-weight: bold;
 }
 </style>
