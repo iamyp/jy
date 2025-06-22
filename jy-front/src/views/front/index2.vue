@@ -30,7 +30,7 @@
               muted
               style="width: 100%; height: 200px; object-fit: cover; border-radius: 4px">
               <source
-                src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+                src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp41"
                 type="video/mp4" />
               您的浏览器不支持视频播放。
             </video>
@@ -38,26 +38,67 @@
         </div>
         <div class="path-table-wrap">
           <div class="path-table-title">编号：JY-001 &nbsp;&nbsp;救援路径</div>
-          <table class="path-table">
-            <thead>
-              <tr>
-                <th>路径顺序</th>
-                <th>设备编号</th>
-                <th>操作</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="(row, idx) in pathRows" :key="idx">
-                <td>{{ row.order }}</td>
-                <td>{{ row.device }}</td>
-                <td>
-                  <span class="table-op">上移</span>
-                  <span class="table-op">下移</span>
-                  <span class="table-op">删除</span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="table-wrap">
+            <div class="boat-metrics">
+              <div class="metric-box">
+                <div class="metric-icon metric-icon-dist">
+                  <!-- <svg width="24" height="24" viewBox="0 0 32 32">
+                  <circle cx="16" cy="16" r="12" fill="#1defff" opacity="0.3" />
+                  <text x="16" y="21" text-anchor="middle" font-size="12" fill="#1defff">
+                    {{ boat.distance }}
+                  </text>
+                </svg> -->
+                  <img
+                    src="@/assets/cicons/icon-distance.png"
+                    style="width: 24px; height: 24px"
+                    alt="boat-icon" />
+                </div>
+                <div>
+                  <div>
+                    <div class="metric-value">100米</div>
+                  </div>
+                  <div class="metric-label">距离</div>
+                </div>
+              </div>
+              <div class="metric-box">
+                <!-- <div class="metric-icon metric-icon-pos">
+                <svg width="24" height="24" viewBox="0 0 32 32">
+                  <polygon points="16,4 28,28 16,22 4,28" fill="#1defff" />
+                </svg>
+              </div> -->
+                <div class="metric-icon metric-icon-dist">
+                  <img
+                    src="@/assets/cicons/icon-direction.png"
+                    style="width: 24px; height: 24px"
+                    alt="boat-icon" />
+                </div>
+                <div>
+                  <div class="metric-value">45度</div>
+                  <div class="metric-label">方位</div>
+                </div>
+              </div>
+            </div>
+            <table class="path-table">
+              <thead>
+                <tr>
+                  <th>路径顺序</th>
+                  <th>设备编号</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="(row, idx) in pathRows" :key="idx">
+                  <td>{{ row.order }}</td>
+                  <td>{{ row.device }}</td>
+                  <td>
+                    <span class="table-op">上移</span>
+                    <span class="table-op">下移</span>
+                    <span class="table-op">删除</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
         <!-- <div class="device-footer">
           <span>救援指令</span>
@@ -242,6 +283,11 @@ const points = [
   align-items: center;
   margin-bottom: 4px;
 }
+.info-row span {
+  padding: 10px;
+  border: 1px solid #23ced9;
+  border-radius: 6px;
+}
 .btn-start {
   background: #00ffcc;
   color: #0a1626;
@@ -301,7 +347,7 @@ const points = [
 }
 .path-table-title {
   color: #4ecfff;
-  font-size: 16px;
+  /* font-size: 16px; */
   margin-bottom: 8px;
   font-weight: bold;
 }
@@ -310,6 +356,8 @@ const points = [
   border-collapse: collapse;
   background: transparent;
   color: #b8e0ff;
+  flex:1;
+  margin-left: 20px;
 }
 .path-table th,
 .path-table td {
@@ -341,7 +389,7 @@ const points = [
 }
 .detect-table-title {
   color: #4ecfff;
-  font-size: 16px;
+  /* font-size: 16px; */
   margin-bottom: 8px;
   font-weight: bold;
 }
@@ -350,7 +398,7 @@ const points = [
   border-collapse: collapse;
   background: transparent;
   color: #b8e0ff;
-  font-size: 15px;
+  /* font-size: 15px; */
 }
 .detect-table th,
 .detect-table td {
@@ -378,5 +426,36 @@ const points = [
   color: #00ffcc;
   font-size: 16px;
   font-weight: bold;
+}
+.table-wrap {
+  display: flex;
+}
+                    
+                    
+.boat-metrics {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 8px;
+  flex-direction: column;
+}
+.metric-box {
+  display: flex;
+  align-items: center;
+  background: rgba(10, 22, 38, 0.7);
+  border-radius: 8px;
+  padding: 6px 18px 6px 6px;
+  /* flex: 1; */
+  /* min-width: 120px; */
+  /* position: relative; */
+}
+.metric-icon {
+  /* width: 40px;
+  height: 40px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(29, 239, 255, 0.08);
+  border-radius: 8px;
+  margin-right: 10px;
 }
 </style>

@@ -13,7 +13,8 @@
           音视频联机
         </span>
       </div>
-      <div class="header-title">水域应急救援系统</div>
+      <!-- <div class="header-title">水域应急救援系统</div> -->
+      <div class="header-title"></div>
       <div class="header-right">
         <img src="@/assets/cicons/icon-time.png"  class="header-icon"/>
         <span class="header-info">22:18:46</span>
