@@ -2,7 +2,7 @@
   <div class="main-content">
     <!-- 上半部分：两组设备卡片 -->
     <div class="device-row">
-      <div class="device-card" v-for="item in 2" :key="item">
+      <div class="device-card" v-for="item in jyDevices" :key="item.id">
         <!-- <div class="device-header">
           <span>编号：JY-001</span>
           <span class="device-status">已启动</span>
@@ -18,8 +18,12 @@
             </div>
             <div class="device-info device-info-left">
               <div class="info-row status-wrap">已启动</div>
-              <div class="info-row"><span>E：1.222222</span></div>
-              <div class="info-row"><span>S：1.222222</span></div>
+              <div class="info-row">
+                <span>E：{{ item.e }}</span>
+              </div>
+              <div class="info-row">
+                <span>S：{{ item.s }}</span>
+              </div>
             </div>
           </div>
           <div class="device-info device-info-right">
@@ -30,14 +34,14 @@
               muted
               style="width: 100%; height: 200px; object-fit: cover; border-radius: 4px">
               <source
-                src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp41"
+                :src="item.video"
                 type="video/mp4" />
               您的浏览器不支持视频播放。
             </video>
           </div>
         </div>
         <div class="path-table-wrap">
-          <div class="path-table-title">编号：JY-001 &nbsp;&nbsp;救援路径</div>
+          <div class="path-table-title">编号：{{ item.id }} &nbsp;&nbsp;救援路径</div>
           <div class="table-wrap">
             <div class="boat-metrics">
               <div class="metric-box">
@@ -55,7 +59,7 @@
                 </div>
                 <div>
                   <div>
-                    <div class="metric-value">100米</div>
+                    <div class="metric-value">{{ item.distance }}米</div>
                   </div>
                   <div class="metric-label">距离</div>
                 </div>
@@ -73,7 +77,7 @@
                     alt="boat-icon" />
                 </div>
                 <div>
-                  <div class="metric-value">45度</div>
+                  <div class="metric-value">{{ item.angle }}度</div>
                   <div class="metric-label">方位</div>
                 </div>
               </div>
@@ -158,6 +162,32 @@ import Radar2 from "@/components/radar/Radar2.vue";
 const pathRows = [
   { order: 1, device: "JS-001" },
   { order: 2, device: "JS-002" },
+];
+const jyDevices = [
+  {
+    id: "JY-001",
+    distance: 600,
+    angle: 30.2,
+    e: "1.222222",
+    s: "1.222222",
+    video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    pathRows: [
+      { order: 1, device: "JS-001" },
+      { order: 2, device: "JS-002" },
+    ],
+  },
+  {
+    id: "JY-002",
+    distance: 800,
+    angle: 40.2,
+    e: "2.22222",
+    s: "3.33333",
+    video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    pathRows: [
+      { order: 1, device: "JS-001" },
+      { order: 2, device: "JS-002" },
+    ],
+  },
 ];
 const detectRows = [
   {
@@ -356,7 +386,7 @@ const points = [
   border-collapse: collapse;
   background: transparent;
   color: #b8e0ff;
-  flex:1;
+  flex: 1;
   margin-left: 20px;
 }
 .path-table th,
@@ -430,8 +460,7 @@ const points = [
 .table-wrap {
   display: flex;
 }
-                    
-                    
+
 .boat-metrics {
   display: flex;
   gap: 12px;

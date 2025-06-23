@@ -4,16 +4,16 @@
     <div class="left-panel">
       <!-- 视频区 -->
       <div class="video-row">
-        <div class="video-card" v-for="(video, idx) in videos" :key="idx">
-          <img class="video-img" :src="video.img" alt="video" />
-          <div class="video-title">编号：{{ video.device }}</div>
+        <div class="video-card" v-for="(item, idx) in jyDevices" :key="idx">
+          <img class="video-img" :src="item.video" alt="video" />
+          <div class="video-title">编号：{{ item.id }}</div>
         </div>
       </div>
       <!-- 音频卡片区 -->
       <div class="audio-grid">
-        <div class="audio-card" v-for="(audio, idx) in audios" :key="idx">
-          <div class="audio-title">编号：{{ audio.device }}</div>
-          <svg v-if="audio.active" class="audio-icon" viewBox="0 0 64 64">
+        <div class="audio-card" v-for="(item, idx) in jsDevices" :key="idx">
+          <div class="audio-title">编号：{{ item.device }}</div>
+          <svg v-if="item.active" class="audio-icon" viewBox="0 0 64 64">
             <path fill="#00ff44" d="M16 24v16h12l12 12V12L28 24H16z" />
           </svg>
           <svg v-else class="audio-icon" viewBox="0 0 64 64">
@@ -31,16 +31,39 @@
 
 <script setup>
 import Radar2 from "@/components/radar/Radar2.vue";
-const videos = [
-  { device: "JY-001", img: "https://img.js.design/assets/img/64e5e2e7b7b6b6b7b7b6b6b7.png" },
-  { device: "JY-002", img: "https://img.js.design/assets/img/64e5e2e7b7b6b6b7b7b6b6b7.png" },
+;
+const jyDevices = [
+  {
+    id: "JY-001",
+    distance: 600,
+    angle: 30.2,
+    e: "1.222222",
+    s: "1.222222",
+    video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    pathRows: [
+      { order: 1, device: "JS-001" },
+      { order: 2, device: "JS-002" },
+    ],
+  },
+  {
+    id: "JY-002",
+    distance: 800,
+    angle: 40.2,
+    e: "2.22222",
+    s: "3.33333",
+    video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    pathRows: [
+      { order: 1, device: "JS-001" },
+      { order: 2, device: "JS-002" },
+    ],
+  },
 ];
-const audios = [
-  { device: "JY-001", active: true },
-  { device: "JY-001", active: true },
-  { device: "JY-001", active: false },
-  { device: "JY-001", active: true },
-  { device: "JY-001", active: true },
+const jsDevices = [
+  { device: "JS-001", active: true },
+  { device: "JS-002", active: true },
+  { device: "JS-003", active: false },
+  { device: "JS-004", active: true },
+  { device: "JS-005", active: true },
 ];
 const points = [
   { x: 0, y: 0, color: "#00ffff", radius: 8 },
