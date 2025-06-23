@@ -17,9 +17,9 @@
               </div>
             </div>
             <div class="device-info device-info-left">
+              <div class="info-row status-wrap">已启动</div>
               <div class="info-row"><span>E：1.222222</span></div>
               <div class="info-row"><span>S：1.222222</span></div>
-              <div class="info-row status-wrap">已启动</div>
             </div>
           </div>
           <div class="device-info device-info-right">
@@ -209,7 +209,7 @@ const points = [
   /* padding: 24px 24px 0 24px; */
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 12px;
 }
 .device-row {
   display: flex;
