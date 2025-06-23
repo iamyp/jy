@@ -4,7 +4,7 @@
     <!-- 左上角救援舟卡片区域 -->
     <div class="side-info">
       <div class="rescue-boat-row">
-        <div class="rescue-boat-card" v-for="boat in rescueBoats" :key="boat.id">
+        <div class="rescue-boat-card" v-for="boat in jyDevices" :key="boat.id">
           <div class="boat-header">
             <span>编号：{{ boat.id }}</span>
             <span class="boat-title">救援舟</span>
@@ -76,18 +76,18 @@
         </div>
       </div>
       <!-- 其余信息卡片区域 -->
-      <div class="info-group" v-for="i in 3" :key="'info' + i">
+      <div class="info-group" v-for="item in jsDevices" :key="item.id">
         <div class="info-card">
           <div class="info-header">
-            <span class="info-title">编号：JY-001</span>
+            <span class="info-title">编号：{{ item.id }}</span>
           </div>
           <div class="info-body">
             <div class="info-coord-group">
               <div class="info-row info-coord">
-                <div>E： 1.222222</div>
+                <div>E： {{ item.e }}</div>
               </div>
               <div class="info-row info-coord">
-                <div>S： 1.222222</div>
+                <div>S： {{ item.s }}</div>
               </div>
             </div>
             <div class="info-metrics">
@@ -104,7 +104,7 @@
                     alt="boat-icon" />
                 </div>
                 <div class="metric-main">
-                  <div class="metric-value">40.2度</div>
+                  <div class="metric-value">{{ item.angle }}度</div>
                   <div class="metric-label">方位</div>
                 </div>
               </div>
@@ -124,7 +124,7 @@
                     alt="boat-icon" />
                 </div>
                 <div class="metric-main">
-                  <div class="metric-value">800米</div>
+                  <div class="metric-value">{{ item.distance }}米</div>
                   <div class="metric-label">距离</div>
                 </div>
               </div>
@@ -169,9 +169,41 @@ const points = [
   { x: 80, y: -60, color: "#00ffff", radius: 6 },
   { x: -100, y: 100, color: "#00ffff", radius: 10 },
 ];
-const rescueBoats = [
+const jyDevices = [
   { id: "JY-001", distance: 800, angle: 40.2, e: "1.222222", s: "1.222222" },
   { id: "JY-002", distance: 800, angle: 40.2, e: "1.222222", s: "1.222222" },
+];
+const jsDevices = [
+  {
+    id: "JS-001",
+    distance: 800,
+    angle: 40.2,
+    e: "1.222222",
+    s: "1.222222",
+    temperature: "37.1",
+    heartRate: "20bpm",
+    bloodPressure: "120mmHg",
+  },
+  {
+    id: "JS-002",
+    distance: 600,
+    angle: 30.2,
+    e: "1.222222",
+    s: "1.222222",
+    temperature: "36.6",
+    heartRate: "19bpm",
+    bloodPressure: "121mmHg",
+  },
+  {
+    id: "JS-003",
+    distance: 400,
+    angle: 50.2,
+    e: "1.222222",
+    s: "1.222222",
+    temperature: "36.5",
+    heartRate: "21bpm",
+    bloodPressure: "122mmHg",
+  },
 ];
 </script>
 

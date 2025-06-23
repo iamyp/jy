@@ -1,0 +1,240 @@
+// CSS变量定义
+:root {
+  --primary-bg: #0a1626;
+  --card-bg: rgba(20, 40, 70, 0.7);
+  --card-gradient: linear-gradient(120deg, #1a2a4a 60%, #23608a 100%);
+  --primary-blue: #4ecfff;
+  --bright-blue: #1defff;
+  --success-green: #00ffcc;
+  --danger-red: #ff4e4e;
+  --text-light: #b8e0ff;
+  --text-white: #ffffff;
+  --border-blue: #4ecfff44;
+  --border-cyan: #23ced9;
+  --shadow-dark: rgba(10, 22, 38, 0.7);
+  
+  // 间距变量
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 0.75rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  
+  // 圆角变量
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  
+  // 字体大小变量
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+}
+
+// 通用样式类
+.main-container {
+  width: 100vw;
+  min-height: 100vh;
+  background: var(--primary-bg);
+  box-sizing: border-box;
+  padding: 1.5vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5vh;
+}
+
+.card-base {
+  background: var(--card-bg);
+  border-radius: var(--radius-xl);
+  border: 1.5px solid var(--border-blue);
+  padding: var(--spacing-md);
+}
+
+.card-gradient {
+  background: var(--card-gradient);
+  border-radius: var(--radius-xl);
+  border: 1.5px solid var(--border-blue);
+  padding: var(--spacing-md);
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacing-lg);
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.btn-primary {
+  background: var(--success-green);
+  color: var(--primary-bg);
+  border: none;
+  border-radius: var(--radius-md);
+  padding: var(--spacing-xs) var(--spacing-lg);
+  font-size: var(--text-base);
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 255, 204, 0.3);
+  }
+}
+
+.btn-danger {
+  background: var(--danger-red);
+  color: var(--text-white);
+  border: none;
+  border-radius: var(--radius-md);
+  padding: var(--spacing-xs) var(--spacing-lg);
+  font-size: var(--text-base);
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 78, 78, 0.3);
+  }
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--primary-blue);
+  border: 1px solid var(--primary-blue);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-xs) var(--spacing-lg);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: var(--primary-blue);
+    color: var(--primary-bg);
+  }
+}
+
+.text-primary {
+  color: var(--primary-blue);
+}
+
+.text-bright {
+  color: var(--bright-blue);
+}
+
+.text-light {
+  color: var(--text-light);
+}
+
+.text-white {
+  color: var(--text-white);
+}
+
+.table-base {
+  width: 100%;
+  border-collapse: collapse;
+  background: transparent;
+  color: var(--text-light);
+  
+  th, td {
+    border: 1px solid var(--border-blue);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    text-align: center;
+  }
+  
+  th {
+    background: #1a2a4a;
+    color: var(--primary-blue);
+    font-weight: bold;
+  }
+}
+
+.metric-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(29, 239, 255, 0.08);
+  border-radius: var(--radius-md);
+  margin-right: var(--spacing-sm);
+  
+  img {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+.metric-box {
+  display: flex;
+  align-items: center;
+  background: var(--shadow-dark);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-xs) var(--spacing-lg) var(--spacing-xs) var(--spacing-xs);
+}
+
+.metric-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.metric-value {
+  font-size: var(--text-sm);
+  font-weight: bold;
+  line-height: 1;
+}
+
+.metric-label {
+  font-size: var(--text-xs);
+  margin-top: 0.2rem;
+}
+
+.coord-item {
+  span {
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-cyan);
+    border-radius: var(--radius-sm);
+  }
+}
+
+// 响应式断点
+@media (max-width: 768px) {
+  .main-container {
+    padding: 2vw;
+    gap: 2vh;
+  }
+  
+  .flex-row {
+    flex-direction: column;
+  }
+  
+  :root {
+    --text-xs: 0.7rem;
+    --text-sm: 0.8rem;
+    --text-base: 0.9rem;
+    --text-lg: 1rem;
+    --text-xl: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-container {
+    padding: 3vw;
+    gap: 1vh;
+  }
+  
+  :root {
+    --spacing-xs: 0.375rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 0.75rem;
+    --spacing-lg: 1rem;
+    --spacing-xl: 1.5rem;
+  }
+} 
