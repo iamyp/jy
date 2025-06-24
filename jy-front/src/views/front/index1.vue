@@ -233,7 +233,7 @@ console.log("Index1 页面加载，设备数据状态：", {
   justify-content: space-between;
   width: 100%;
   color: #4ecfff;
-  font-size: 15px;
+  /* font-size: 15px; */
   margin-bottom: 8px;
 }
 .boat-title {
@@ -247,7 +247,7 @@ console.log("Index1 页面加载，设备数据状态：", {
 }
 .boat-coord {
   color: #b8e0ff;
-  font-size: 13px;
+  /* font-size: 13px; */
   /* margin-bottom: 8px; */
   display: flex;
   flex-direction: column;
@@ -273,7 +273,7 @@ console.log("Index1 页面加载，设备数据状态：", {
   border: 1px solid #4ecfff;
   border-radius: 6px;
   padding: 2px 10px;
-  font-size: 13px;
+  /* font-size: 13px; */
   cursor: pointer;
 }
 /* .corner-border {
@@ -335,7 +335,7 @@ console.log("Index1 页面加载，设备数据状态：", {
 }
 .info-title {
   color: #4ecfff;
-  font-size: 13px;
+  /* font-size: 13px; */
   font-weight: bold;
   letter-spacing: 1px;
 }
@@ -373,13 +373,13 @@ console.log("Index1 页面加载，设备数据状态：", {
 }
 .metric-value {
   color: #fff;
-  font-size: 13px;
+  /* font-size: 13px; */
   font-weight: bold;
   line-height: 1;
 }
 .metric-label {
   color: #b8e0ff;
-  font-size: 13px;
+  /* font-size: 13px; */
   margin-top: 2px;
 }
 .info-row {
@@ -388,7 +388,7 @@ console.log("Index1 页面加载，设备数据状态：", {
   margin-bottom: 4px;
   align-items: center;
   color: #b8e0ff;
-  font-size: 14px;
+  /* font-size: 14px; */
   flex-direction: column;
 }
 .info-coord {
@@ -401,7 +401,7 @@ console.log("Index1 页面加载，设备数据状态：", {
   /* margin-top: 8px; */
   /* gap: 24px; */
   color: #1defff;
-  font-size: 14px;
+  /* font-size: 14px; */
   align-items: flex-start;
   border: 1px solid #23ced9;
   border-radius: 6px;
@@ -489,7 +489,7 @@ console.log("Index1 页面加载，设备数据状态：", {
   /* border-radius: 5px 5px 5px 5px;
   border: 1px solid #23ced9; */
   /* padding: 4px 10px; */
-  font-size: 14px;
+  /* font-size: 14px; */
   /* justify-content: space-around; */
 }
 .status-cnt-1 {

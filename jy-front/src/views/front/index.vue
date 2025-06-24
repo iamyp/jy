@@ -280,13 +280,14 @@ body,
 .main-component-content {
   display: flex;
   flex-direction: row;
-  height: calc(100vh - 60px);
-  /* min-height: calc(100vh - 60px); */
+  /* height: calc(100vh - 60px); */
+  min-height: calc(100vh - 60px);
   padding: 24px;
   width: 100vw;
   box-sizing: border-box;
   overflow: auto;
   font-size: 14px;
+  flex-grow: 1;
 }
 .side-info {
   /* width: 350px; */
