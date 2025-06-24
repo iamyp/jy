@@ -150,6 +150,15 @@ const useDevicesStore = defineStore("devices", {
         // device.pathRows.splice(index, 1);
       });
     },
+    movePathRow(jyDeviceId, idx, direction) {
+      this.jyDevices.forEach((jyDevice) => {
+        if (jyDevice.id === jyDeviceId) {
+          const pathRow = jyDevice.pathRows[idx];
+          jyDevice.pathRows.splice(idx, 1);
+          jyDevice.pathRows.splice(idx + direction, 0, pathRow);
+        }
+      });
+    },
 
     // 更新雷达点
     updatePoints(newPoints) {

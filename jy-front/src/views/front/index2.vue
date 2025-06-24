@@ -92,11 +92,11 @@
               </thead>
               <tbody>
                 <tr v-for="(item1, idx) in item.pathRows" :key="idx">
-                  <td>{{ item1.order }}</td>
+                  <td>{{ idx + 1 }}</td>
                   <td>{{ item1.device }}</td>
                   <td>
-                    <span class="table-op">上移</span>
-                    <span class="table-op">下移</span>
+                    <span class="table-op" @click="movePathRow(item.id, idx, -1)">上移</span>
+                    <span class="table-op" @click="movePathRow(item.id, idx, 1)">下移</span>
                     <span class="table-op" @click="removePathRow(item.id, item1.device)">删除</span>
                   </td>
                 </tr>
@@ -166,6 +166,10 @@ const { jyDevices, detectRows, pathRows, points } = storeToRefs(devicesStore);
 function removePathRow(jyDeviceId, jsDeviceId) {
   console.log(jyDeviceId, jsDeviceId);
   devicesStore.removePathRow(jyDeviceId, jsDeviceId);
+}
+function movePathRow(jyDeviceId, idx, direction) {
+  console.log(jyDeviceId, idx, direction);
+  devicesStore.movePathRow(jyDeviceId, idx, direction);
 }
 </script>
 
