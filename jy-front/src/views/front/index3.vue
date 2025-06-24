@@ -11,7 +11,7 @@
       </div>
       <!-- 音频卡片区 -->
       <div class="audio-grid">
-        <div class="audio-card" v-for="(item, idx) in jsDevices" :key="idx">
+        <div class="audio-card" v-for="(item, idx) in jsDevices" :key="idx" @click="toggleDeviceActive(item.id)">
           <div class="audio-title">编号：{{ item.device }}</div>
           <svg v-if="item.active" class="audio-icon" viewBox="0 0 64 64">
             <path fill="#00ff44" d="M16 24v16h12l12 12V12L28 24H16z" />
@@ -19,6 +19,7 @@
           <svg v-else class="audio-icon" viewBox="0 0 64 64">
             <path fill="#888" d="M16 24v16h12l12 12V12L28 24H16z" />
           </svg>
+          <div class="device-status">{{ item.active ? '激活' : '未激活' }}</div>
         </div>
       </div>
     </div>
@@ -31,45 +32,15 @@
 
 <script setup>
 import Radar2 from "@/components/radar/Radar2.vue";
-;
-const jyDevices = [
-  {
-    id: "JY-001",
-    distance: 600,
-    angle: 30.2,
-    e: "1.222222",
-    s: "1.222222",
-    video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-    pathRows: [
-      { order: 1, device: "JS-001" },
-      { order: 2, device: "JS-002" },
-    ],
-  },
-  {
-    id: "JY-002",
-    distance: 800,
-    angle: 40.2,
-    e: "2.22222",
-    s: "3.33333",
-    video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-    pathRows: [
-      { order: 1, device: "JS-001" },
-      { order: 2, device: "JS-002" },
-    ],
-  },
-];
-const jsDevices = [
-  { device: "JS-001", active: true },
-  { device: "JS-002", active: true },
-  { device: "JS-003", active: false },
-  { device: "JS-004", active: true },
-  { device: "JS-005", active: true },
-];
-const points = [
-  { x: 0, y: 0, color: "#00ffff", radius: 8 },
-  { x: 80, y: -60, color: "#00ffff", radius: 6 },
-  { x: -100, y: 100, color: "#00ffff", radius: 10 },
-];
+import useDevicesStore from "@/store/modules/devices";
+
+const devicesStore = useDevicesStore();
+const { jyDevices, jsDevices, points } = storeToRefs(devicesStore);
+
+// 切换设备激活状态
+const toggleDeviceActive = (deviceId) => {
+  devicesStore.toggleJsDeviceActive(deviceId);
+};
 </script>
 
 <style scoped>
@@ -134,6 +105,13 @@ const points = [
   min-width: 180px;
   min-height: 120px;
   justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.audio-card:hover {
+  border-color: #4ecfff;
+  background: rgba(20, 40, 70, 0.9);
 }
 .audio-title {
   color: #4ecfff;
@@ -144,6 +122,13 @@ const points = [
   width: 64px;
   height: 64px;
   margin-top: 8px;
+}
+
+.device-status {
+  color: #b8e0ff;
+  font-size: 12px;
+  margin-top: 8px;
+  font-weight: bold;
 }
 .right-panel {
   flex: 1.8;

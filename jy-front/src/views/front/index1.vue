@@ -164,47 +164,10 @@
 
 <script setup>
 import Radar2 from "@/components/radar/Radar2.vue";
-const points = [
-  { x: 0, y: 0, color: "#00ffff", radius: 8 },
-  { x: 80, y: -60, color: "#00ffff", radius: 6 },
-  { x: -100, y: 100, color: "#00ffff", radius: 10 },
-];
-const jyDevices = [
-  { id: "JY-001", distance: 800, angle: 40.2, e: "1.222222", s: "1.222222" },
-  { id: "JY-002", distance: 800, angle: 40.2, e: "1.222222", s: "1.222222" },
-];
-const jsDevices = [
-  {
-    id: "JS-001",
-    distance: 800,
-    angle: 40.2,
-    e: "1.222222",
-    s: "1.222222",
-    temperature: "37.1",
-    heartRate: "20bpm",
-    bloodPressure: "120mmHg",
-  },
-  {
-    id: "JS-002",
-    distance: 600,
-    angle: 30.2,
-    e: "1.222222",
-    s: "1.222222",
-    temperature: "36.6",
-    heartRate: "19bpm",
-    bloodPressure: "121mmHg",
-  },
-  {
-    id: "JS-003",
-    distance: 400,
-    angle: 50.2,
-    e: "1.222222",
-    s: "1.222222",
-    temperature: "36.5",
-    heartRate: "21bpm",
-    bloodPressure: "122mmHg",
-  },
-];
+import useDevicesStore from "@/store/modules/devices";
+
+const devicesStore = useDevicesStore();
+const { jyDevices, jsDevices, points } = storeToRefs(devicesStore);
 </script>
 
 <style scoped>

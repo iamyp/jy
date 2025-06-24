@@ -159,76 +159,10 @@
 
 <script setup>
 import Radar2 from "@/components/radar/Radar2.vue";
-const pathRows = [
-  { order: 1, device: "JS-001" },
-  { order: 2, device: "JS-002" },
-];
-const jyDevices = [
-  {
-    id: "JY-001",
-    distance: 600,
-    angle: 30.2,
-    e: "1.222222",
-    s: "1.222222",
-    video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-    pathRows: [
-      { order: 1, device: "JS-001" },
-      { order: 2, device: "JS-002" },
-    ],
-  },
-  {
-    id: "JY-002",
-    distance: 800,
-    angle: 40.2,
-    e: "2.22222",
-    s: "3.33333",
-    video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-    pathRows: [
-      { order: 1, device: "JS-001" },
-      { order: 2, device: "JS-002" },
-    ],
-  },
-];
-const detectRows = [
-  {
-    device: "JS-001",
-    lng: "1.322222",
-    lat: "2.66666",
-    dist: 20,
-    angle: 40,
-    temp: 37.1,
-    heart: 82,
-    rescue: true,
-    rescueDevice: "JY-001",
-  },
-  {
-    device: "JS-002",
-    lng: "1.322222",
-    lat: "1.66666",
-    dist: 20,
-    angle: 40,
-    temp: 36.1,
-    heart: 82,
-    rescue: true,
-    rescueDevice: "JY-002",
-  },
-  {
-    device: "JS-003",
-    lng: "2.322222",
-    lat: "2.66666",
-    dist: 20,
-    angle: 40,
-    temp: 37.1,
-    heart: 82,
-    rescue: false,
-    rescueDevice: "JY-003",
-  },
-];
-const points = [
-  { x: 0, y: 0, color: "#00ffff", radius: 8 },
-  { x: 80, y: -60, color: "#00ffff", radius: 6 },
-  { x: -100, y: 100, color: "#00ffff", radius: 10 },
-];
+import useDevicesStore from "@/store/modules/devices";
+
+const devicesStore = useDevicesStore();
+const { jyDevices, detectRows, pathRows, points } = storeToRefs(devicesStore);
 </script>
 
 <style scoped>
