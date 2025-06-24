@@ -44,11 +44,13 @@ const currentTime = ref("");
 // 实时更新时间
 const updateTime = () => {
   const now = new Date();
-  currentDate.value = now.toLocaleDateString("zh-CN", {
-    year: "numeric",
-    month: "2-digit", 
-    day: "2-digit",
-  }).replace(/\//g, "-");
+  currentDate.value = now
+    .toLocaleDateString("zh-CN", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    })
+    .replace(/\//g, "-");
   currentTime.value = now.toLocaleTimeString("zh-CN", {
     hour: "2-digit",
     minute: "2-digit",
@@ -74,9 +76,7 @@ const handleTabClick = (index) => {
 // 初始化数据方法
 const initData = () => {
   if (devicesStore.isInitialized) return;
-
-  // 设置救援舟设备数据
-  devicesStore.setJyDevices([
+  const jyDevices = [
     {
       id: "JY-001",
       distance: 800,
@@ -97,14 +97,11 @@ const initData = () => {
       s: "3.333333",
       video: "https://www.w3schools.com/html/mov_bbb.mp4",
       pathRows: [
-        { order: 1, device: "JS-001" },
-        { order: 2, device: "JS-002" },
+        { order: 1, device: "JS-003" },
       ],
     },
-  ]);
-
-  // 设置救生设备数据
-  devicesStore.setJsDevices([
+  ];
+  const jsDevices = [
     {
       id: "JS-001",
       device: "JS-001",
@@ -116,6 +113,7 @@ const initData = () => {
       heartRate: "20bpm",
       bloodPressure: "120mmHg",
       active: true,
+      inRescue: true,
     },
     {
       id: "JS-002",
@@ -128,6 +126,7 @@ const initData = () => {
       heartRate: "19bpm",
       bloodPressure: "121mmHg",
       active: true,
+      inRescue: true,
     },
     {
       id: "JS-003",
@@ -140,6 +139,7 @@ const initData = () => {
       heartRate: "21bpm",
       bloodPressure: "122mmHg",
       active: false,
+      inRescue: true,
     },
     {
       id: "JS-004",
@@ -151,7 +151,8 @@ const initData = () => {
       temperature: "36.8",
       heartRate: "18bpm",
       bloodPressure: "118mmHg",
-      active: true,
+      active: false,
+      inRescue: false,
     },
     {
       id: "JS-005",
@@ -164,45 +165,19 @@ const initData = () => {
       heartRate: "22bpm",
       bloodPressure: "125mmHg",
       active: true,
+      inRescue: false,
     },
-  ]);
+  ];
+  // 设置救援舟设备数据
+  devicesStore.setJyDevices(jyDevices);
+
+  // 设置救生设备数据
+  devicesStore.setJsDevices(jsDevices);
+  
+  
 
   // 设置侦测点数据
-  devicesStore.setDetectRows([
-    {
-      device: "JS-001",
-      lng: "1.322222",
-      lat: "2.66666",
-      dist: 20,
-      angle: 40,
-      temp: 37.1,
-      heart: 82,
-      rescue: true,
-      rescueDevice: "JY-001",
-    },
-    {
-      device: "JS-002",
-      lng: "1.322222",
-      lat: "1.66666",
-      dist: 20,
-      angle: 40,
-      temp: 36.1,
-      heart: 82,
-      rescue: true,
-      rescueDevice: "JY-002",
-    },
-    {
-      device: "JS-003",
-      lng: "2.322222",
-      lat: "2.66666",
-      dist: 20,
-      angle: 40,
-      temp: 37.1,
-      heart: 82,
-      rescue: false,
-      rescueDevice: "JY-003",
-    },
-  ]);
+  devicesStore.setDetectRows(jsDevices.filter((item) => !item.inRescue));
 
   // 设置路径表数据
   // devicesStore.setPathRows([

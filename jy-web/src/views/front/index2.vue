@@ -136,13 +136,13 @@
             <tr v-for="(row, idx) in detectRows" :key="idx">
               <td><input type="checkbox" checked /></td>
               <td>{{ row.device }}</td>
-              <td>{{ row.lng }}</td>
-              <td>{{ row.lat }}</td>
-              <td>{{ row.dist }}</td>
+              <td>{{ row.e }}</td>
+              <td>{{ row.s }}</td>
+              <td>{{ row.distance }}</td>
               <td>{{ row.angle }}</td>
-              <td>{{ row.temp }}</td>
-              <td>{{ row.heart }}</td>
-              <td>{{ row.rescue ? "是" : "否" }}</td>
+              <td>{{ row.temperature }}</td>
+              <td>{{ row.heartRate }}</td>
+              <td>{{ row.inRescue ? "是" : "否" }}</td>
               <td>{{ row.rescueDevice }}</td>
             </tr>
           </tbody>

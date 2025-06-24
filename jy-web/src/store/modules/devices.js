@@ -21,14 +21,14 @@ const useDevicesStore = defineStore("devices", {
 
   getters: {
     // 获取活跃的救生设备
-    activeJsDevices: (state) => {
-      return state.jsDevices.filter((device) => device.active);
-    },
+    // activeJsDevices: (state) => {
+    //   return state.jsDevices.filter((device) => device.active);
+    // },
 
     // 获取需要救援的侦测点
-    rescueNeededDetects: (state) => {
-      return state.detectRows.filter((row) => !row.rescue);
-    },
+    // rescueNeededDetects: (state) => {
+    //   return state.detectRows.filter((row) => !row.rescue);
+    // },
 
     // 根据ID获取救援舟设备
     getJyDeviceById: (state) => {
@@ -148,6 +148,11 @@ const useDevicesStore = defineStore("devices", {
           });
         }
         // device.pathRows.splice(index, 1);
+      });
+      this.jsDevices.forEach((jsDevice) => {
+        if (jsDevice.id === jsDeviceId) {
+          jsDevice.inRescue = false;
+        }
       });
     },
     movePathRow(jyDeviceId, idx, direction) {
