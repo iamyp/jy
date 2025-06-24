@@ -152,11 +152,19 @@
       </div>
       <div class="weather-panel">
         <div class="weather-title">当前气象</div>
-        <div class="weather-row"><span>海况等级</span><span>1级</span></div>
-        <div class="weather-row"><span>水温</span><span>35℃</span></div>
-        <div class="weather-row"><span>浪高</span><span>0.5m</span></div>
-        <div class="weather-row"><span>流速</span><span>0.1m/s</span></div>
-        <div class="weather-row"><span>流向</span><span>西南偏南</span></div>
+        <div class="weather-row">
+          <span>海况等级</span><span>{{ weacherInfo.seaLevel }}级</span>
+        </div>
+        <div class="weather-row">
+          <span>水温</span><span>{{ weacherInfo.waterTemp }}℃</span>
+        </div>
+        <div class="weather-row">
+          <span>浪高</span><span>{{ weacherInfo.waveHeight }}m</span>
+        </div>
+        <div class="weather-row">
+          <span>流速</span><span>{{ weacherInfo.flowSpeed }}m/s</span>
+        </div>
+        <div class="weather-row"><span>流向</span><span>{{ weacherInfo.flowDirection }}</span></div>
       </div>
     </div>
   </div>
@@ -165,16 +173,23 @@
 <script setup>
 import Radar2 from "@/components/radar/Radar2.vue";
 import useDevicesStore from "@/store/modules/devices";
+const weacherInfo = ref({
+  seaLevel: 1,
+  waterTemp: 35,
+  waveHeight: 0.5,
+  flowSpeed: 0.1,
+  flowDirection: "西南偏南",
+});
 
 const devicesStore = useDevicesStore();
 const { jyDevices, jsDevices, points, isInitialized } = storeToRefs(devicesStore);
 
 // 调试信息
-console.log('Index1 页面加载，设备数据状态：', {
+console.log("Index1 页面加载，设备数据状态：", {
   isInitialized: isInitialized.value,
   jyDevicesCount: jyDevices.value.length,
   jsDevicesCount: jsDevices.value.length,
-  pointsCount: points.value.length
+  pointsCount: points.value.length,
 });
 </script>
 
