@@ -2,7 +2,7 @@
   <div class="main-bg">
     <!-- 顶部导航 -->
     <header class="header-bar">
-      <div class="header-left">
+      <nav class="header-left">
         <span class="nav-item" :class="{ active: currentPath === 1 }" @click="handleTabClick(1)">
           首页
         </span>
@@ -12,15 +12,15 @@
         <span class="nav-item" :class="{ active: currentPath === 3 }" @click="handleTabClick(3)">
           音视频联机
         </span>
-      </div>
+      </nav>
       <div class="header-title">水域应急救援系统</div>
       <div class="header-title"></div>
       <div class="header-right">
-        <img src="@/assets/cicons/icon-time.png"  class="header-icon"/>
-        <span class="header-info">22:18:46</span>
-        <img src="@/assets/cicons/icon-calendar.png"  class="header-icon"/>
-        <span class="header-info">2022.01.10</span>
-        <img src="@/assets/cicons/icon-temperature.png"  class="header-icon"/>
+        <img src="@/assets/cicons/icon-time.png" class="header-icon" />
+        <span class="header-info">{{ currentTime }}</span>
+        <img src="@/assets/cicons/icon-calendar.png" class="header-icon" />
+        <span class="header-info">{{ currentDate }}</span>
+        <img src="@/assets/cicons/icon-temperature.png" class="header-icon" />
         <span class="header-info">12~14℃</span>
       </div>
     </header>
@@ -37,6 +37,35 @@ import useDevicesStore from "@/store/modules/devices";
 
 const currentPath = ref(null);
 const devicesStore = useDevicesStore();
+// const currentTime = ref(new Date().toLocaleTimeString());
+const currentDate = ref("");
+const currentTime = ref("");
+
+// 实时更新时间
+const updateTime = () => {
+  const currentTime = new Date();
+  currentDate.value = currentTime.toLocaleDateString("zh-CN", {
+    year: "numeric",
+    month: "2-digit", 
+    day: "2-digit",
+  }).replace(/\//g, "-");
+  
+  currentTime.value = currentTime.toLocaleTimeString("zh-CN", {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  });
+  // currentDate.value = new Date()
+  //   .toLocaleDateString("zh-CN", {
+  //     year: "numeric",
+  //     month: "2-digit",
+  //     day: "2-digit",
+  //   })
+  //   .replace(/\//g, "-");
+};
+
+// 启动定时器，每秒更新时间
+let timeInterval;
 
 const handleTabClick = (index) => {
   currentPath.value = index;
@@ -46,7 +75,7 @@ const handleTabClick = (index) => {
 // 初始化数据方法
 const initData = () => {
   if (devicesStore.isInitialized) return;
-  
+
   // 设置救援舟设备数据
   devicesStore.setJyDevices([
     {
@@ -74,7 +103,7 @@ const initData = () => {
       ],
     },
   ]);
-  
+
   // 设置救生设备数据
   devicesStore.setJsDevices([
     {
@@ -138,7 +167,7 @@ const initData = () => {
       active: true,
     },
   ]);
-  
+
   // 设置侦测点数据
   devicesStore.setDetectRows([
     {
@@ -175,31 +204,39 @@ const initData = () => {
       rescueDevice: "JY-003",
     },
   ]);
-  
+
   // 设置路径表数据
   // devicesStore.setPathRows([
   //   { order: 1, device: "JS-001" },
   //   { order: 2, device: "JS-002" },
   // ]);
-  
+
   // 设置雷达点数据
   devicesStore.setPoints([
     { x: 0, y: 0, color: "#00ffff", radius: 8 },
     { x: 80, y: -60, color: "#00ffff", radius: 6 },
     { x: -100, y: 100, color: "#00ffff", radius: 10 },
   ]);
-  
+
   // 标记为已初始化
   devicesStore.markAsInitialized();
 };
 
 onMounted(() => {
-  
+  updateTime();
+  // 启动时间更新定时器
+  timeInterval = setInterval(updateTime, 1000);
   // 设置默认路由
   currentPath.value = 1;
   router.push("/front/index" + currentPath.value);
   // 初始化数据
   initData();
+});
+// 组件卸载时清理定时器
+onUnmounted(() => {
+  if (timeInterval) {
+    clearInterval(timeInterval);
+  }
 });
 </script>
 
