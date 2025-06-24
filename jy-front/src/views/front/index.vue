@@ -33,14 +33,173 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import router from "@/router";
+import useDevicesStore from "@/store/modules/devices";
+
 const currentPath = ref(null);
+const devicesStore = useDevicesStore();
+
 const handleTabClick = (index) => {
   currentPath.value = index;
   router.push("/front/index" + index);
 };
+
+// 初始化数据方法
+const initData = () => {
+  if (devicesStore.isInitialized) return;
+  
+  // 设置救援舟设备数据
+  devicesStore.setJyDevices([
+    {
+      id: "JY-001",
+      distance: 800,
+      angle: 40.2,
+      e: "1.322222",
+      s: "1.222222",
+      video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      pathRows: [
+        { order: 1, device: "JS-001" },
+        { order: 2, device: "JS-002" },
+      ],
+    },
+    {
+      id: "JY-002",
+      distance: 800,
+      angle: 40.2,
+      e: "2.222222",
+      s: "3.333333",
+      video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      pathRows: [
+        { order: 1, device: "JS-001" },
+        { order: 2, device: "JS-002" },
+      ],
+    },
+  ]);
+  
+  // 设置救生设备数据
+  devicesStore.setJsDevices([
+    {
+      id: "JS-001",
+      device: "JS-001",
+      distance: 800,
+      angle: 40.2,
+      e: "1.222222",
+      s: "1.222222",
+      temperature: "37.1",
+      heartRate: "20bpm",
+      bloodPressure: "120mmHg",
+      active: true,
+    },
+    {
+      id: "JS-002",
+      device: "JS-002",
+      distance: 600,
+      angle: 30.2,
+      e: "1.222222",
+      s: "1.222222",
+      temperature: "36.6",
+      heartRate: "19bpm",
+      bloodPressure: "121mmHg",
+      active: true,
+    },
+    {
+      id: "JS-003",
+      device: "JS-003",
+      distance: 400,
+      angle: 50.2,
+      e: "1.222222",
+      s: "1.222222",
+      temperature: "36.5",
+      heartRate: "21bpm",
+      bloodPressure: "122mmHg",
+      active: false,
+    },
+    {
+      id: "JS-004",
+      device: "JS-004",
+      distance: 500,
+      angle: 35.5,
+      e: "1.333333",
+      s: "1.444444",
+      temperature: "36.8",
+      heartRate: "18bpm",
+      bloodPressure: "118mmHg",
+      active: true,
+    },
+    {
+      id: "JS-005",
+      device: "JS-005",
+      distance: 350,
+      angle: 45.8,
+      e: "1.555555",
+      s: "1.666666",
+      temperature: "37.2",
+      heartRate: "22bpm",
+      bloodPressure: "125mmHg",
+      active: true,
+    },
+  ]);
+  
+  // 设置侦测点数据
+  devicesStore.setDetectRows([
+    {
+      device: "JS-001",
+      lng: "1.322222",
+      lat: "2.66666",
+      dist: 20,
+      angle: 40,
+      temp: 37.1,
+      heart: 82,
+      rescue: true,
+      rescueDevice: "JY-001",
+    },
+    {
+      device: "JS-002",
+      lng: "1.322222",
+      lat: "1.66666",
+      dist: 20,
+      angle: 40,
+      temp: 36.1,
+      heart: 82,
+      rescue: true,
+      rescueDevice: "JY-002",
+    },
+    {
+      device: "JS-003",
+      lng: "2.322222",
+      lat: "2.66666",
+      dist: 20,
+      angle: 40,
+      temp: 37.1,
+      heart: 82,
+      rescue: false,
+      rescueDevice: "JY-003",
+    },
+  ]);
+  
+  // 设置路径表数据
+  // devicesStore.setPathRows([
+  //   { order: 1, device: "JS-001" },
+  //   { order: 2, device: "JS-002" },
+  // ]);
+  
+  // 设置雷达点数据
+  devicesStore.setPoints([
+    { x: 0, y: 0, color: "#00ffff", radius: 8 },
+    { x: 80, y: -60, color: "#00ffff", radius: 6 },
+    { x: -100, y: 100, color: "#00ffff", radius: 10 },
+  ]);
+  
+  // 标记为已初始化
+  devicesStore.markAsInitialized();
+};
+
 onMounted(() => {
+  
+  // 设置默认路由
   currentPath.value = 1;
   router.push("/front/index" + currentPath.value);
+  // 初始化数据
+  initData();
 });
 </script>
 

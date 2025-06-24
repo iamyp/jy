@@ -91,7 +91,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="(row, idx) in pathRows" :key="idx">
+                <tr v-for="(row, idx) in item.pathRows" :key="idx">
                   <td>{{ row.order }}</td>
                   <td>{{ row.device }}</td>
                   <td>

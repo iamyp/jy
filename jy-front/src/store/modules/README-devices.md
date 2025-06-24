@@ -50,6 +50,10 @@
 }
 ```
 
+## 初始化
+
+设备数据的初始化由 `index.vue` 页面负责，当应用启动时会自动调用 `initData()` 方法来加载初始数据。初始化逻辑包含在 `index.vue` 中，通过调用 store 的 setter 方法来设置数据。
+
 ## 使用方法
 
 ### 1. 在组件中导入和使用
@@ -67,6 +71,15 @@ const { jyDevices, jsDevices, points } = storeToRefs(devicesStore);
     {{ device.id }} - {{ device.distance }}米
   </div>
 </template>
+```
+
+### 2. 数据重置（如果需要）
+
+```javascript
+// 重置所有设备数据
+devicesStore.resetDevices();
+
+// 注意：重新初始化需要在 index.vue 中调用 initData() 方法
 ```
 
 ### 2. 使用Getters
@@ -108,6 +121,13 @@ devicesStore.addPathRow({
 
 | 方法名 | 参数 | 说明 |
 |--------|------|------|
+| `setJyDevices(devices)` | devices: 救援舟设备数组 | 设置救援舟设备数据 |
+| `setJsDevices(devices)` | devices: 救生设备数组 | 设置救生设备数据 |
+| `setDetectRows(rows)` | rows: 侦测点数据数组 | 设置侦测点数据 |
+| `setPathRows(rows)` | rows: 路径数据数组 | 设置路径表数据 |
+| `setPoints(points)` | points: 雷达点数据数组 | 设置雷达点数据 |
+| `markAsInitialized()` | 无 | 标记数据为已初始化状态 |
+| `resetDevices()` | 无 | 重置所有设备数据为空 |
 | `updateJyDevice(id, data)` | id: 设备ID, data: 更新数据 | 更新救援舟设备信息 |
 | `updateJsDevice(id, data)` | id: 设备ID, data: 更新数据 | 更新救生设备信息 |
 | `toggleJsDeviceActive(id)` | id: 设备ID | 切换救生设备激活状态 |

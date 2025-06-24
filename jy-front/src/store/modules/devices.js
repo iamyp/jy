@@ -1,146 +1,22 @@
 const useDevicesStore = defineStore('devices', {
   state: () => ({
     // 救援舟设备数据
-    jyDevices: [
-      {
-        id: "JY-001",
-        distance: 800,
-        angle: 40.2,
-        e: "1.322222",
-        s: "1.222222",
-        video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-        pathRows: [
-          { order: 1, device: "JS-001" },
-          { order: 2, device: "JS-002" },
-        ],
-      },
-      {
-        id: "JY-002",
-        distance: 800,
-        angle: 40.2,
-        e: "2.222222",
-        s: "3.333333",
-        video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-        pathRows: [
-          { order: 1, device: "JS-001" },
-          { order: 2, device: "JS-002" },
-        ],
-      },
-    ],
+    jyDevices: [],
     
     // 救生设备数据
-    jsDevices: [
-      {
-        id: "JS-001",
-        device: "JS-001",
-        distance: 800,
-        angle: 40.2,
-        e: "1.222222",
-        s: "1.222222",
-        temperature: "37.1",
-        heartRate: "20bpm",
-        bloodPressure: "120mmHg",
-        active: true,
-      },
-      {
-        id: "JS-002",
-        device: "JS-002",
-        distance: 600,
-        angle: 30.2,
-        e: "1.222222",
-        s: "1.222222",
-        temperature: "36.6",
-        heartRate: "19bpm",
-        bloodPressure: "121mmHg",
-        active: true,
-      },
-      {
-        id: "JS-003",
-        device: "JS-003",
-        distance: 400,
-        angle: 50.2,
-        e: "1.222222",
-        s: "1.222222",
-        temperature: "36.5",
-        heartRate: "21bpm",
-        bloodPressure: "122mmHg",
-        active: false,
-      },
-      {
-        id: "JS-004",
-        device: "JS-004",
-        distance: 500,
-        angle: 35.5,
-        e: "1.333333",
-        s: "1.444444",
-        temperature: "36.8",
-        heartRate: "18bpm",
-        bloodPressure: "118mmHg",
-        active: true,
-      },
-      {
-        id: "JS-005",
-        device: "JS-005",
-        distance: 350,
-        angle: 45.8,
-        e: "1.555555",
-        s: "1.666666",
-        temperature: "37.2",
-        heartRate: "22bpm",
-        bloodPressure: "125mmHg",
-        active: true,
-      },
-    ],
+    jsDevices: [],
     
     // 侦测点表格数据
-    detectRows: [
-      {
-        device: "JS-001",
-        lng: "1.322222",
-        lat: "2.66666",
-        dist: 20,
-        angle: 40,
-        temp: 37.1,
-        heart: 82,
-        rescue: true,
-        rescueDevice: "JY-001",
-      },
-      {
-        device: "JS-002",
-        lng: "1.322222",
-        lat: "1.66666",
-        dist: 20,
-        angle: 40,
-        temp: 36.1,
-        heart: 82,
-        rescue: true,
-        rescueDevice: "JY-002",
-      },
-      {
-        device: "JS-003",
-        lng: "2.322222",
-        lat: "2.66666",
-        dist: 20,
-        angle: 40,
-        temp: 37.1,
-        heart: 82,
-        rescue: false,
-        rescueDevice: "JY-003",
-      },
-    ],
+    detectRows: [],
     
     // 路径表数据
-    pathRows: [
-      { order: 1, device: "JS-001" },
-      { order: 2, device: "JS-002" },
-    ],
+    // pathRows: [],
     
     // 雷达点数据
-    points: [
-      { x: 0, y: 0, color: "#00ffff", radius: 8 },
-      { x: 80, y: -60, color: "#00ffff", radius: 6 },
-      { x: -100, y: 100, color: "#00ffff", radius: 10 },
-    ],
+    points: [],
+    
+    // 初始化状态
+    isInitialized: false,
   }),
   
   getters: {
@@ -166,6 +42,46 @@ const useDevicesStore = defineStore('devices', {
   },
   
   actions: {
+    // 设置救援舟设备数据
+    setJyDevices(devices) {
+      this.jyDevices = devices;
+    },
+    
+    // 设置救生设备数据
+    setJsDevices(devices) {
+      this.jsDevices = devices;
+    },
+    
+    // 设置侦测点数据
+    setDetectRows(rows) {
+      this.detectRows = rows;
+    },
+    
+    // 设置路径表数据
+    // setPathRows(rows) {
+    //   this.pathRows = rows;
+    // },
+    
+    // 设置雷达点数据
+    setPoints(points) {
+      this.points = points;
+    },
+    
+    // 标记为已初始化
+    markAsInitialized() {
+      this.isInitialized = true;
+    },
+    
+    // 重置设备数据
+    resetDevices() {
+      this.jyDevices = [];
+      this.jsDevices = [];
+      this.detectRows = [];
+      // this.pathRows = [];
+      this.points = [];
+      this.isInitialized = false;
+    },
+
     // 更新救援舟设备信息
     updateJyDevice(id, data) {
       const index = this.jyDevices.findIndex(device => device.id === id);

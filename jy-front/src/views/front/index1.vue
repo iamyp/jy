@@ -167,7 +167,15 @@ import Radar2 from "@/components/radar/Radar2.vue";
 import useDevicesStore from "@/store/modules/devices";
 
 const devicesStore = useDevicesStore();
-const { jyDevices, jsDevices, points } = storeToRefs(devicesStore);
+const { jyDevices, jsDevices, points, isInitialized } = storeToRefs(devicesStore);
+
+// 调试信息
+console.log('Index1 页面加载，设备数据状态：', {
+  isInitialized: isInitialized.value,
+  jyDevicesCount: jyDevices.value.length,
+  jsDevicesCount: jsDevices.value.length,
+  pointsCount: points.value.length
+});
 </script>
 
 <style scoped>
