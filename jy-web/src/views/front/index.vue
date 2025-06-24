@@ -43,14 +43,13 @@ const currentTime = ref("");
 
 // 实时更新时间
 const updateTime = () => {
-  const currentTime = new Date();
-  currentDate.value = currentTime.toLocaleDateString("zh-CN", {
+  const now = new Date();
+  currentDate.value = now.toLocaleDateString("zh-CN", {
     year: "numeric",
     month: "2-digit", 
     day: "2-digit",
   }).replace(/\//g, "-");
-  
-  currentTime.value = currentTime.toLocaleTimeString("zh-CN", {
+  currentTime.value = now.toLocaleTimeString("zh-CN", {
     hour: "2-digit",
     minute: "2-digit",
     second: "2-digit",
