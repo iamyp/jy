@@ -84,7 +84,7 @@ const initData = () => {
       angle: 40.2,
       e: "1.322222",
       s: "1.222222",
-      video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      video: "https://www.w3schools.com/html/mov_bbb.mp4",
       pathRows: [
         { order: 1, device: "JS-001" },
         { order: 2, device: "JS-002" },
@@ -96,7 +96,7 @@ const initData = () => {
       angle: 40.2,
       e: "2.222222",
       s: "3.333333",
-      video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+      video: "https://www.w3schools.com/html/mov_bbb.mp4",
       pathRows: [
         { order: 1, device: "JS-001" },
         { order: 2, device: "JS-002" },

@@ -5,7 +5,18 @@
       <!-- 视频区 -->
       <div class="video-row">
         <div class="video-card" v-for="(item, idx) in jyDevices" :key="idx">
-          <img class="video-img" :src="item.video" alt="video" />
+          <!-- <img class="video-img" :src="item.video" alt="video" /> -->
+          <video
+              class="device-video"
+              controls
+              autoplay
+              muted
+              style="width: 100%; height: 200px; object-fit: cover; border-radius: 4px">
+              <source
+                :src="item.video"
+                type="video/mp4" />
+              您的浏览器不支持视频播放。
+            </video>
           <div class="video-title">编号：{{ item.id }}</div>
         </div>
       </div>
