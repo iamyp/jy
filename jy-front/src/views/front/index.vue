@@ -286,6 +286,7 @@ body,
   width: 100vw;
   box-sizing: border-box;
   overflow: auto;
+  font-size: 14px;
 }
 .side-info {
   /* width: 350px; */
