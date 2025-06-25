@@ -77,12 +77,13 @@ const handleTabClick = (index) => {
 
 let eventSource = null;
 function initSSE() {
-  eventSource = new EventSource("/data/stream");
+  // eventSource = new EventSource("/data/stream");
+  eventSource = new EventSource("http://localhost:8080/data/createSse?uid=123");
   eventSource.onopen = function (event) {
     console.log("SSE连接已建立");
   };
 
-  eventSource.addEventListener("data", function (event) {
+  eventSource.onmessage = function (event) {
     console.log("收到数据:", event.data);
     // 这里可以处理从后端接收到的数据
     // 例如更新设备状态、位置等信息
@@ -100,7 +101,7 @@ function initSSE() {
     } catch (error) {
       console.error("解析SSE数据失败:", error);
     }
-  });
+  };
 
   eventSource.onerror = function (event) {
     console.error("SSE连接错误:", event);
