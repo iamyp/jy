@@ -408,7 +408,7 @@ function movePathRow(jyDeviceId, idx, direction) {
 .boat-metrics {
   display: flex;
   gap: 12px;
-  margin-bottom: 8px;
+  /* margin-bottom: 8px; */
   flex-direction: column;
 }
 .metric-box {

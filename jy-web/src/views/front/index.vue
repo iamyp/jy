@@ -136,32 +136,6 @@ const initData = () => {
       soundActive: false,
       rescueStatus: true,
     },
-    {
-      id: "JS-004",
-      device: "JS-004",
-      distance: 500,
-      angle: 35.5,
-      e: "1.333333",
-      s: "1.444444",
-      temperature: "36.8",
-      heartRate: "18bpm",
-      bloodPressure: "118mmHg",
-      soundActive: false,
-      rescueStatus: false,
-    },
-    {
-      id: "JS-005",
-      device: "JS-005",
-      distance: 350,
-      angle: 45.8,
-      e: "1.555555",
-      s: "1.666666",
-      temperature: "37.2",
-      heartRate: "22bpm",
-      bloodPressure: "125mmHg",
-      soundActive: true,
-      rescueStatus: false,
-    },
   ];
   // 设置救援舟设备数据
   devicesStore.setJyDevices(jyDevices);
