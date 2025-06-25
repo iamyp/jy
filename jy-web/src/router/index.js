@@ -58,7 +58,7 @@ export const constantRoutes = [
     hidden: true,
   },
   {
-    path: "",
+    path: "/admin",
     component: Layout,
     redirect: "/index",
     children: [
@@ -83,6 +83,11 @@ export const constantRoutes = [
         meta: { title: "个人中心", icon: "user" },
       },
     ],
+  },
+  {
+    path: "",
+    component: Layout,
+    redirect: "/front",
   },
 
   {
