@@ -11,27 +11,27 @@ import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import com.ruoyi.common.utils.StringUtils;
 
-
 @Component
 public class SseClient {
     private Logger log = LoggerFactory.getLogger(SseClient.class);
     private static final Map<String, SseEmitter> sseEmitterMap = new ConcurrentHashMap<>();
+
     /**
      * 创建连接
      */
     public SseEmitter createSse(String uid) {
-        //默认30秒超时,设置为0L则永不超时
+        // 默认30秒超时,设置为0L则永不超时
         SseEmitter sseEmitter = new SseEmitter(0l);
-        //完成后回调
+        // 完成后回调
         sseEmitter.onCompletion(() -> {
             log.info("[{}]结束连接...................", uid);
             sseEmitterMap.remove(uid);
         });
-        //超时回调
+        // 超时回调
         sseEmitter.onTimeout(() -> {
             log.info("[{}]连接超时...................", uid);
         });
-        //异常回调
+        // 异常回调
         sseEmitter.onError(
                 throwable -> {
                     try {
@@ -45,8 +45,7 @@ public class SseClient {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                }
-        );
+                });
         try {
             sseEmitter.send(SseEmitter.event().reconnectTime(5000));
         } catch (IOException e) {
@@ -56,12 +55,12 @@ public class SseClient {
         log.info("[{}]创建sse连接成功！", uid);
         return sseEmitter;
     }
- 
+
     /**
      * 给指定用户发送消息
      *
      */
-    public boolean sendMessage(String uid,String messageId, String message) {
+    public boolean sendMessage(String uid, String messageId, String message) {
         if (StringUtils.isBlank(message)) {
             log.info("参数异常，msg为null", uid);
             return false;
@@ -72,30 +71,31 @@ public class SseClient {
             return false;
         }
         try {
-            sseEmitter.send(SseEmitter.event().id(messageId).reconnectTime(1*60*1000L).data(message));
-            log.info("用户{},消息id:{},推送成功:{}", uid,messageId, message);
+            sseEmitter.send(SseEmitter.event().id(messageId).reconnectTime(1 * 60 * 1000L).data(message));
+            log.info("用户{},消息id:{},推送成功:{}", uid, messageId, message);
             return true;
-        }catch (Exception e) {
+        } catch (Exception e) {
             sseEmitterMap.remove(uid);
-            log.info("用户{},消息id:{},推送异常:{}", uid,messageId, e.getMessage());
+            log.info("用户{},消息id:{},推送异常:{}", uid, messageId, e.getMessage());
             sseEmitter.complete();
             return false;
         }
     }
- 
+
     /**
      * 断开
+     * 
      * @param uid
      */
-    public void closeSse(String uid){
+    public void closeSse(String uid) {
         if (sseEmitterMap.containsKey(uid)) {
             SseEmitter sseEmitter = sseEmitterMap.get(uid);
             sseEmitter.complete();
             sseEmitterMap.remove(uid);
-        }else {
-            log.info("用户{} 连接已关闭",uid);
+        } else {
+            log.info("用户{} 连接已关闭", uid);
         }
- 
+
     }
- 
+
 }

@@ -30,11 +30,10 @@ public class DataServiceImpl implements IDataService {
         return Arrays.asList("1", "2", "3");
     }
 
-    @Scheduled(fixedDelay = 1000)
+    // @Scheduled(fixedDelay = 1000)
     public void sendData() {
         try {
-            logger.info("定时任务执行中...");
-
+            // logger.info("定时任务执行中...");
             // 生成模拟数据
             String simulatedData = String.format(
                     "{\"device\":\"sensor1\",\"id\":%d,\"temperature\":%.2f,\"humidity\":%.2f}",
@@ -45,9 +44,9 @@ public class DataServiceImpl implements IDataService {
             boolean success = sseClient.sendMessage("123", String.valueOf(System.currentTimeMillis()), simulatedData);
 
             if (success) {
-                logger.info("定时任务执行完成，数据发送成功: {}", simulatedData);
+                // logger.info("定时任务执行完成，数据发送成功: {}", simulatedData);
             } else {
-                logger.warn("定时任务执行完成，但数据发送失败 - 可能没有活跃的SSE连接");
+                // logger.warn("定时任务执行完成，但数据发送失败 - 可能没有活跃的SSE连接");
             }
         } catch (Exception e) {
             logger.error("定时任务执行失败: {}", e.getMessage(), e);
