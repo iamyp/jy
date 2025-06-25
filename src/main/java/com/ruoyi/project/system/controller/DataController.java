@@ -26,38 +26,23 @@ public class DataController {
         return dataService.list();
     }
 
-    // @GetMapping(value = "/stream", produces = "text/event-stream")
-    // @Scheduled(fixedRate = 1000)
+    // @CrossOrigin
+    // @GetMapping(value = "/stream", produces = "text/event-stream;charset=UTF-8")
     // public SseEmitter streamData() {
-    //     SseEmitter emitter = new SseEmitter(Long.MAX_VALUE);
-
-    //     // 在后台线程中处理数据推送
-    //     try {
-    //         // 获取串口数据
-    //         String data = "hahaha";
-    //         if (data != null) {
-    //             // 发送数据到前端
-    //             emitter.send(SseEmitter.event().name("data").data(data));
-    //         }
-
-    //     } catch (Exception e) {
-    //         emitter.completeWithError(e);
-    //     }
-
-    //     return emitter;
+    // // 创建SSE连接，使用固定的uid"123"，这样定时任务就能找到这个连接
+    // return sseClient.createSse("123");
     // }
 
     @CrossOrigin
-    @GetMapping(value = "/createSse", produces = "text/event-stream")
+    @GetMapping(value = "/sse", produces = "text/event-stream;charset=UTF-8")
     public SseEmitter createConnect(String uid) {
         return sseClient.createSse(uid);
     }
 
     @CrossOrigin
-    @GetMapping(value = "/sendMessage", produces = "text/event-stream")
+    @GetMapping(value = "/sendMessage", produces = "text/event-stream;charset=UTF-8")
     public boolean sendMessage(String uid, String messageId, String message) {
         return sseClient.sendMessage(uid, messageId, message);
     }
-
 
 }

@@ -78,7 +78,7 @@ const handleTabClick = (index) => {
 let eventSource = null;
 function initSSE() {
   // eventSource = new EventSource("/data/stream");
-  eventSource = new EventSource("http://localhost:8080/data/createSse?uid=123");
+  eventSource = new EventSource("http://localhost:8080/data/sse?uid=123");
   eventSource.onopen = function (event) {
     console.log("SSE连接已建立");
   };
