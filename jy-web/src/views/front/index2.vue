@@ -142,7 +142,7 @@
               <td>{{ row.angle }}</td>
               <td>{{ row.temperature }}</td>
               <td>{{ row.heartRate }}</td>
-              <td>{{ row.inRescue ? "是" : "否" }}</td>
+              <td>{{ row.rescueStatus ? "是" : "否" }}</td>
               <td>{{ row.rescueDevice }}</td>
             </tr>
           </tbody>

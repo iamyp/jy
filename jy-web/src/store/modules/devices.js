@@ -115,7 +115,7 @@ const useDevicesStore = defineStore("devices", {
     updateDetectRescueStatus(jsDeviceId, rescueStatus, rescueDevice = null) {
       const detect = this.detectRows.find((row) => row.device === jsDeviceId);
       if (detect) {
-        detect.inRescue = rescueStatus;
+        detect.rescueStatus = rescueStatus;
         if (rescueDevice) {
           detect.rescueDevice = rescueDevice;
         }
@@ -151,6 +151,19 @@ const useDevicesStore = defineStore("devices", {
         // device.pathRows.splice(index, 1);
       });
       this.updateDetectRescueStatus(jsDeviceId, false, null);
+    },
+    addPathRow(jyDeviceId, jsDeviceId) {
+      this.jyDevices.forEach((jyDevice) => {
+        if (jyDevice.id === jyDeviceId) {
+          // 检查是否已存在该设备
+          const existingPath = jyDevice.pathRows.find(pathRow => pathRow.device === jsDeviceId);
+          if (existingPath) {
+            return; // 如果已存在，则不添加
+          }
+          jyDevice.pathRows.push({ device: jsDeviceId });
+        }
+      });
+      this.updateDetectRescueStatus(jsDeviceId, true, jyDeviceId);
     },
     movePathRow(jyDeviceId, idx, direction) {
       this.jyDevices.forEach((jyDevice) => {

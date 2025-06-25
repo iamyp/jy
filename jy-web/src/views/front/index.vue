@@ -108,7 +108,7 @@ const initData = () => {
       heartRate: "20bpm",
       bloodPressure: "120mmHg",
       soundActive: true,
-      inRescue: true,
+      rescueStatus: true,
     },
     {
       id: "JS-002",
@@ -121,7 +121,7 @@ const initData = () => {
       heartRate: "19bpm",
       bloodPressure: "121mmHg",
       soundActive: true,
-      inRescue: true,
+      rescueStatus: true,
     },
     {
       id: "JS-003",
@@ -134,7 +134,7 @@ const initData = () => {
       heartRate: "21bpm",
       bloodPressure: "122mmHg",
       soundActive: false,
-      inRescue: true,
+      rescueStatus: true,
     },
     {
       id: "JS-004",
@@ -147,7 +147,7 @@ const initData = () => {
       heartRate: "18bpm",
       bloodPressure: "118mmHg",
       soundActive: false,
-      inRescue: false,
+      rescueStatus: false,
     },
     {
       id: "JS-005",
@@ -160,7 +160,7 @@ const initData = () => {
       heartRate: "22bpm",
       bloodPressure: "125mmHg",
       soundActive: true,
-      inRescue: false,
+      rescueStatus: false,
     },
   ];
   // 设置救援舟设备数据
