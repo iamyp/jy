@@ -74,6 +74,40 @@ const handleTabClick = (index) => {
 };
 
 // 初始化数据方法
+
+let eventSource = null;
+function initSSE() {
+  eventSource = new EventSource("/data/stream");
+  eventSource.onopen = function (event) {
+    console.log("SSE连接已建立");
+  };
+
+  eventSource.addEventListener("data", function (event) {
+    console.log("收到数据:", event.data);
+    // 这里可以处理从后端接收到的数据
+    // 例如更新设备状态、位置等信息
+    try {
+      const data = JSON.parse(event.data);
+      console.log("data:", data);
+      // 根据数据类型更新相应的设备信息
+      if (data.type === "jy") {
+        // 更新救援舟数据
+        devicesStore.updateJyDevice(data);
+      } else if (data.type === "js") {
+        // 更新救生设备数据
+        devicesStore.updateJsDevice(data);
+      }
+    } catch (error) {
+      console.error("解析SSE数据失败:", error);
+    }
+  });
+
+  eventSource.onerror = function (event) {
+    console.error("SSE连接错误:", event);
+    // 可以在这里实现重连逻辑
+  };
+}
+
 const initData = () => {
   if (devicesStore.isInitialized) return;
   const jyDevices = [
@@ -162,7 +196,6 @@ const initData = () => {
   // 标记为已初始化
   devicesStore.markAsInitialized();
 };
-
 onMounted(() => {
   updateTime();
   // 启动时间更新定时器
@@ -172,9 +205,15 @@ onMounted(() => {
   router.push("/front/index" + currentPath.value);
   // 初始化数据
   initData();
+  // 建立SSE连接
+  initSSE();
+  // 在组件卸载时关闭SSE连接
 });
 // 组件卸载时清理定时器
 onUnmounted(() => {
+  if (eventSource) {
+    eventSource.close();
+  }
   if (timeInterval) {
     clearInterval(timeInterval);
   }
