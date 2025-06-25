@@ -84,7 +84,7 @@ const initData = () => {
       e: "1.322222",
       s: "1.222222",
       video: "https://www.w3schools.com/html/mov_bbb.mp4",
-      pathRows: [{ device: "JS-001" }, { device: "JS-002" }],
+      pathRows: [{ device: "JS-001" }],
     },
     {
       id: "JY-002",
@@ -93,7 +93,7 @@ const initData = () => {
       e: "2.222222",
       s: "3.333333",
       video: "https://www.w3schools.com/html/mov_bbb.mp4",
-      pathRows: [{ device: "JS-003" }],
+      pathRows: [],
     },
   ];
   const jsDevices = [

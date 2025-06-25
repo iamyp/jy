@@ -24,17 +24,14 @@ const useDevicesStore = defineStore("devices", {
     // activeJsDevices: (state) => {
     //   return state.jsDevices.filter((device) => device.active);
     // },
-
     // // 获取需要救援的侦测点
     // rescueNeededDetects: (state) => {
     //   return state.detectRows.filter((row) => !row.rescue);
     // },
-
     // // 根据ID获取救援舟设备
     // getJyDeviceById: (state) => {
     //   return (id) => state.jyDevices.find((device) => device.id === id);
     // },
-
     // // 根据ID获取救生设备
     // getJsDeviceById: (state) => {
     //   return (id) => state.jsDevices.find((device) => device.id === id);
@@ -124,14 +121,14 @@ const useDevicesStore = defineStore("devices", {
     },
 
     // 更新路径表
-    updatePathRows(newPathRows) {
-      this.pathRows = [...newPathRows];
-    },
+    // updatePathRows(newPathRows) {
+    //   this.pathRows = [...newPathRows];
+    // },
 
     // 添加路径项
-    addPathRow(pathData) {
-      this.pathRows.push(pathData);
-    },
+    // addPathRow(pathData) {
+    // this.pathRows.push(pathData);
+    // },
 
     // 删除路径项
     removePathRow(jyDeviceId, jsDeviceId) {
@@ -140,7 +137,9 @@ const useDevicesStore = defineStore("devices", {
         if (jyDevice.id === jyDeviceId) {
           jyDevice.pathRows.forEach((pathRow) => {
             if (pathRow.device === jsDeviceId) {
-              const pathIndex = jyDevice.pathRows.findIndex(pathRow => pathRow.device === jsDeviceId);
+              const pathIndex = jyDevice.pathRows.findIndex(
+                (pathRow) => pathRow.device === jsDeviceId
+              );
               if (pathIndex !== -1) {
                 jyDevice.pathRows.splice(pathIndex, 1);
               }
@@ -152,18 +151,20 @@ const useDevicesStore = defineStore("devices", {
       });
       this.updateDetectRescueStatus(jsDeviceId, false, null);
     },
-    addPathRow(jyDeviceId, jsDeviceId) {
+    addPathRow(jyDeviceId, jsDeviceIds) {
       this.jyDevices.forEach((jyDevice) => {
         if (jyDevice.id === jyDeviceId) {
           // 检查是否已存在该设备
-          const existingPath = jyDevice.pathRows.find(pathRow => pathRow.device === jsDeviceId);
-          if (existingPath) {
-            return; // 如果已存在，则不添加
-          }
-          jyDevice.pathRows.push({ device: jsDeviceId });
+          jsDeviceIds.forEach((jsDeviceId) => {
+            const existingPath = jyDevice.pathRows.find((pathRow) => pathRow.device === jsDeviceId);
+            if (existingPath) {
+              return; // 如果已存在，则不添加
+            }
+            jyDevice.pathRows.push({ device: jsDeviceId });
+            this.updateDetectRescueStatus(jsDeviceId, true, jyDeviceId);
+          });
         }
       });
-      this.updateDetectRescueStatus(jsDeviceId, true, jyDeviceId);
     },
     movePathRow(jyDeviceId, idx, direction) {
       this.jyDevices.forEach((jyDevice) => {

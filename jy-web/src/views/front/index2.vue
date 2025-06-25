@@ -134,7 +134,7 @@
           </thead>
           <tbody>
             <tr v-for="(row, idx) in detectRows" :key="idx">
-              <td><input type="checkbox" checked /></td>
+              <td><input type="checkbox" :checked="selectedDevices.includes(row.device)" @click="toggleRescue(row.device)"/></td>
               <td>{{ row.device }}</td>
               <td>{{ row.e }}</td>
               <td>{{ row.s }}</td>
@@ -148,8 +148,8 @@
           </tbody>
         </table>
         <div class="button-table-op-wrap">
-          <span class="table-op" @click="addToPath()">救援舟救援</span>
-          <span class="table-op" @click="addToPath()">救援圈救援</span>
+          <span class="table-op" @click="addToPath('JY-001')">救援舟救援</span>
+          <span class="table-op" @click="addToPath('JY-002')">救援圈救援</span>
         </div>
       </div>
       <div class="radar-wrap">
@@ -173,6 +173,27 @@ function movePathRow(jyDeviceId, idx, direction) {
   console.log(jyDeviceId, idx, direction);
   devicesStore.movePathRow(jyDeviceId, idx, direction);
 }
+const selectedDevices = ref([]);
+function toggleRescue(deviceId) {
+  // const selectedDevices = ref([]);
+  // const toggleRescue = (deviceId) => {
+    const index = selectedDevices.value.indexOf(deviceId);
+    if (index > -1) {
+      selectedDevices.value.splice(index, 1);
+    } else {
+      selectedDevices.value.push(deviceId);
+    }
+    console.log('已选择的设备:', selectedDevices.value);
+  // };
+
+  console.log(selectedDevices.value);
+  // devicesStore.toggleRescueStatus(deviceId);
+}
+function addToPath(jyDeviceId) {
+  console.log(jyDeviceId, selectedDevices.value);
+  devicesStore.addPathRow(jyDeviceId, selectedDevices.value);
+}
+
 </script>
 
 <style scoped>
