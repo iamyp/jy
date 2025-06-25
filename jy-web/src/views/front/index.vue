@@ -84,10 +84,7 @@ const initData = () => {
       e: "1.322222",
       s: "1.222222",
       video: "https://www.w3schools.com/html/mov_bbb.mp4",
-      pathRows: [
-        { order: 1, device: "JS-001" },
-        { order: 2, device: "JS-002" },
-      ],
+      pathRows: [{ device: "JS-001" }, { device: "JS-002" }],
     },
     {
       id: "JY-002",
@@ -96,9 +93,7 @@ const initData = () => {
       e: "2.222222",
       s: "3.333333",
       video: "https://www.w3schools.com/html/mov_bbb.mp4",
-      pathRows: [
-        { order: 1, device: "JS-003" },
-      ],
+      pathRows: [{ device: "JS-003" }],
     },
   ];
   const jsDevices = [
@@ -112,7 +107,7 @@ const initData = () => {
       temperature: "37.1",
       heartRate: "20bpm",
       bloodPressure: "120mmHg",
-      active: true,
+      soundActive: true,
       inRescue: true,
     },
     {
@@ -125,7 +120,7 @@ const initData = () => {
       temperature: "36.6",
       heartRate: "19bpm",
       bloodPressure: "121mmHg",
-      active: true,
+      soundActive: true,
       inRescue: true,
     },
     {
@@ -138,7 +133,7 @@ const initData = () => {
       temperature: "36.5",
       heartRate: "21bpm",
       bloodPressure: "122mmHg",
-      active: false,
+      soundActive: false,
       inRescue: true,
     },
     {
@@ -151,7 +146,7 @@ const initData = () => {
       temperature: "36.8",
       heartRate: "18bpm",
       bloodPressure: "118mmHg",
-      active: false,
+      soundActive: false,
       inRescue: false,
     },
     {
@@ -164,7 +159,7 @@ const initData = () => {
       temperature: "37.2",
       heartRate: "22bpm",
       bloodPressure: "125mmHg",
-      active: true,
+      soundActive: true,
       inRescue: false,
     },
   ];
@@ -173,11 +168,9 @@ const initData = () => {
 
   // 设置救生设备数据
   devicesStore.setJsDevices(jsDevices);
-  
-  
 
   // 设置侦测点数据
-  devicesStore.setDetectRows(jsDevices.filter((item) => !item.inRescue));
+  devicesStore.setDetectRows(jsDevices);
 
   // 设置路径表数据
   // devicesStore.setPathRows([

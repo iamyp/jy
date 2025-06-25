@@ -25,20 +25,20 @@ const useDevicesStore = defineStore("devices", {
     //   return state.jsDevices.filter((device) => device.active);
     // },
 
-    // 获取需要救援的侦测点
+    // // 获取需要救援的侦测点
     // rescueNeededDetects: (state) => {
     //   return state.detectRows.filter((row) => !row.rescue);
     // },
 
-    // 根据ID获取救援舟设备
-    getJyDeviceById: (state) => {
-      return (id) => state.jyDevices.find((device) => device.id === id);
-    },
+    // // 根据ID获取救援舟设备
+    // getJyDeviceById: (state) => {
+    //   return (id) => state.jyDevices.find((device) => device.id === id);
+    // },
 
-    // 根据ID获取救生设备
-    getJsDeviceById: (state) => {
-      return (id) => state.jsDevices.find((device) => device.id === id);
-    },
+    // // 根据ID获取救生设备
+    // getJsDeviceById: (state) => {
+    //   return (id) => state.jsDevices.find((device) => device.id === id);
+    // },
   },
 
   actions: {
@@ -112,14 +112,15 @@ const useDevicesStore = defineStore("devices", {
     },
 
     // 更新侦测点救援状态
-    updateDetectRescueStatus(deviceId, rescueStatus, rescueDevice = null) {
-      const detect = this.detectRows.find((row) => row.device === deviceId);
+    updateDetectRescueStatus(jsDeviceId, rescueStatus, rescueDevice = null) {
+      const detect = this.detectRows.find((row) => row.device === jsDeviceId);
       if (detect) {
-        detect.rescue = rescueStatus;
+        detect.inRescue = rescueStatus;
         if (rescueDevice) {
           detect.rescueDevice = rescueDevice;
         }
       }
+      console.log(this.detectRows);
     },
 
     // 更新路径表
@@ -149,11 +150,7 @@ const useDevicesStore = defineStore("devices", {
         }
         // device.pathRows.splice(index, 1);
       });
-      this.jsDevices.forEach((jsDevice) => {
-        if (jsDevice.id === jsDeviceId) {
-          jsDevice.inRescue = false;
-        }
-      });
+      this.updateDetectRescueStatus(jsDeviceId, false, null);
     },
     movePathRow(jyDeviceId, idx, direction) {
       this.jyDevices.forEach((jyDevice) => {
